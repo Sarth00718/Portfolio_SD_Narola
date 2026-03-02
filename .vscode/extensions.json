@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    // Tailwind CSS IntelliSense — the #1 fix for @apply/@tailwind warnings
+    "bradlc.vscode-tailwindcss",
+    // Prettier
+    "esbenp.prettier-vscode",
+    // ESLint
+    "dbaeumer.vscode-eslint",
+    // PostCSS Language Support
+    "csstools.postcss",
+    // Path IntelliSense (for @components, @pages aliases)
+    "christian-kohler.path-intellisense",
+    // Auto Rename Tag
+    "formulahendry.auto-rename-tag",
+    // GitLens
+    "eamodio.gitlens"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+    // ─── Tailwind CSS: suppress false-positive IDE warnings ───────────────
+    // @tailwind, @apply, @layer, @theme, @config are valid PostCSS/Tailwind
+    // directives. The VS Code CSS language server doesn't know about them,
+    // so we tell it to ignore unknown at-rules instead of flagging them.
+    "css.lint.unknownAtRules": "ignore",
+    "scss.lint.unknownAtRules": "ignore",
+    "less.lint.unknownAtRules": "ignore",
+    // ─── Tailwind IntelliSense: point at our config ────────────────────────
+    "tailwindCSS.experimental.configFile": "./client/tailwind.config.js",
+    "tailwindCSS.includeLanguages": {
+        "javascript": "javascript",
+        "javascriptreact": "javascript",
+        "typescriptreact": "javascript"
+    },
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    // ─── PostCSS: tell VS Code to use PostCSS for .css files ──────────────
+    "css.customData": [],
+    "files.associations": {
+        "*.css": "css"
+    },
+    // ─── Editor quality-of-life ───────────────────────────────────────────
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    // ─── Prettier defaults ────────────────────────────────────────────────
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // ─── Emmet for JSX ───────────────────────────────────────────────────
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    // ─── Terminal ────────────────────────────────────────────────────────
+    "terminal.integrated.defaultProfile.windows": "PowerShell"
+}

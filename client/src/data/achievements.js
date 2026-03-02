@@ -1,0 +1,133 @@
+// ============================================================
+//  PROFILE & ACHIEVEMENTS — Sarth Narola (CORRECTED)
+// ============================================================
+
+export const PROFILE = {
+  name: 'Sarth Narola',
+  title: 'Full Stack Developer & AI Enthusiast',
+  tagline: 'Building Scalable, Production-Ready Systems with Modern Web & AI',
+  email: 'sarthnarola007@gmail.com',
+  location: 'Surat, Gujarat, India',
+  address: '104, New Shakti Vijay Society, Varachha Road, Surat, Gujarat, India',
+  university: 'Nirma University',
+  degree: 'B.Tech Computer Science & Engineering',
+  cgpa: '9.10',
+  batch: '2022–2026',
+  rollNo: '23BCE194',
+  github: 'https://github.com/Sarth00718',
+  linkedin: 'https://linkedin.com/in/sarth-narola-223002323',
+};
+
+export const ACHIEVEMENTS = [
+  {
+    id: 'amazon-ml',
+    title: 'Amazon ML Summer School 2025',
+    subtitle: 'Selected among top engineering students nationwide',
+    description:
+      "Selected for Amazon's prestigious Machine Learning Summer School 2025 — a highly competitive national program covering supervised learning, deep learning, NLP, probabilistic graphical models, and recommendation systems, taught directly by Amazon Scientists and researchers.",
+    icon: '🏅',
+    color: 'from-amber-500 to-orange-500',
+    gradient: 'from-amber-500/10 to-orange-500/10',
+    borderColor: 'border-amber-500/30',
+    accentColor: '#f59e0b',
+    badge: 'Amazon',
+    year: 2025,
+    type: 'certification',
+  },
+  {
+    id: 'cgpa',
+    title: 'Academic Excellence — CGPA 9.10',
+    subtitle: 'Nirma University · B.Tech CSE · 2022–2026',
+    description:
+      'Maintaining a 9.10 CGPA across all semesters at Nirma University, consistently ranking among the top performers in the Computer Science & Engineering department. Strong foundation across DSA, DBMS, OS, Networks, and ML coursework.',
+    icon: '🎓',
+    color: 'from-blue-500 to-indigo-500',
+    gradient: 'from-blue-500/10 to-indigo-500/10',
+    borderColor: 'border-blue-500/30',
+    accentColor: '#3b82f6',
+    badge: '9.10 GPA',
+    year: 2026,
+    type: 'academic',
+  },
+  {
+    id: 'mindsprint',
+    title: 'Mind Sprint Hackathon — IronXman',
+    subtitle: 'Unstop National Hackathon',
+    description:
+      'Participated in the Mind Sprint Hackathon (IronXman track) hosted on Unstop — a national-level competitive hackathon requiring rapid full-stack prototyping under tight time constraints, demonstrating problem-solving and engineering speed.',
+    icon: '⚡',
+    color: 'from-purple-500 to-violet-500',
+    gradient: 'from-purple-500/10 to-violet-500/10',
+    borderColor: 'border-purple-500/30',
+    accentColor: '#8b5cf6',
+    badge: 'Hackathon',
+    year: 2024,
+    type: 'hackathon',
+  },
+  {
+    id: 'sih',
+    title: 'Smart India Hackathon 2024',
+    subtitle: 'National Level Participation · Government of India',
+    description:
+      "Participated in Smart India Hackathon — India's largest open innovation platform organised by the Government of India — presenting an AI-driven solution to a national-level problem statement at the institution level.",
+    icon: '🇮🇳',
+    color: 'from-green-500 to-emerald-500',
+    gradient: 'from-green-500/10 to-emerald-500/10',
+    borderColor: 'border-green-500/30',
+    accentColor: '#10b981',
+    badge: 'SIH 2024',
+    year: 2024,
+    type: 'hackathon',
+  },
+];
+
+export const EDUCATION = [
+  {
+    degree: 'B.Tech — Computer Science & Engineering',
+    institution: 'Nirma University',
+    location: 'Ahmedabad, Gujarat',
+    period: '2022 – 2026',
+    cgpa: '9.10 / 10.0',
+    highlights: [
+      'Core: Data Structures & Algorithms, DBMS, OS, Computer Networks',
+      'Specialization: Machine Learning & Full-Stack Web Development',
+      'Roll No: 23BCE194',
+    ],
+  },
+];
+
+export const CP_PROFILES = [
+  {
+    platform: 'LeetCode',
+    handle: 'sarthnarola',
+    status: 'Active',
+    description: 'Solving problems across arrays, DP, graphs, and system design concepts',
+    link: 'https://leetcode.com/u/SarthNarola/',
+    color: '#f59e0b',
+    bgColor: 'rgba(245,158,11,0.08)',
+    borderColor: 'rgba(245,158,11,0.2)',
+    icon: '💡',
+  },
+  {
+    platform: 'Codeforces',
+    handle: 'Sarth_Narola',
+    status: 'Active',
+    description: 'Practicing competitive programming — greedy, graphs, number theory',
+    link: 'https://codeforces.com/profile/Sarth_Narola',
+    color: '#3b82f6',
+    bgColor: 'rgba(59,130,246,0.08)',
+    borderColor: 'rgba(59,130,246,0.2)',
+    icon: '⚡',
+  },
+  {
+    platform: 'CodeChef',
+    handle: 'sarth_narola',
+    status: '2★ Rated',
+    description: 'Achieved 2-star rating through consistent long-contest participation',
+    link: 'https://www.codechef.com/users/sarth_narola',
+    color: '#a16207',
+    bgColor: 'rgba(161,98,7,0.08)',
+    borderColor: 'rgba(161,98,7,0.25)',
+    icon: '🏆',
+  },
+];

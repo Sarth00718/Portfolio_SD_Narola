@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#818cf8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="64" height="64" rx="14" ry="14" fill="url(#bg)"/>
+
+  <!-- Inner glow highlight -->
+  <rect width="64" height="64" rx="14" ry="14" fill="url(#glow)"/>
+
+  <!-- Subtle top highlight -->
+  <rect x="4" y="4" width="56" height="26" rx="10" ry="10" fill="white" opacity="0.06"/>
+
+  <!-- "SN" text -->
+  <text
+    x="32"
+    y="43"
+    font-family="'Segoe UI', Arial, sans-serif"
+    font-size="26"
+    font-weight="800"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="-0.5"
+  >SN</text>
+</svg>
