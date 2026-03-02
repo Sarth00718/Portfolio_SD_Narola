@@ -39,10 +39,10 @@ export default function AboutSection() {
             style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
           >
             <p className="text-slate-300 text-sm leading-loose mb-5">
-              I'm <span className="text-white font-semibold">Sarth Narola</span> ({PROFILE.rollNo}), a final-year B.Tech CSE student at <span className="text-indigo-400 font-medium">Nirma University</span> with a CGPA of <span className="text-indigo-400 font-bold">9.10</span>. I am passionate about building production-ready web applications and AI-integrated systems.
+              I'm <span className="text-white font-semibold">Sarth Narola</span> ({PROFILE.rollNo}), a final-year B.Tech CSE student at <span className="text-blue-400 font-medium">Nirma University</span> with a CGPA of <span className="text-blue-400 font-bold">9.10</span>. I am passionate about building production-ready web applications and AI-integrated systems.
             </p>
             <p className="text-slate-400 text-sm leading-loose mb-5">
-              I've built multiple full-stack projects including an <span className="text-cyan-400 font-medium">AI Financial Document Chatbot</span> using RAG + LangChain + FAISS, a <span className="text-cyan-400 font-medium">Smart Expense Tracker</span> live in production, and an enterprise Fleet Management System. I follow clean architecture: Controllers → Services → Repositories.
+              I've built multiple full-stack projects including an <span className="text-sky-400 font-medium">AI Financial Document Chatbot</span> using RAG + LangChain + FAISS, a <span className="text-sky-400 font-medium">Smart Expense Tracker</span> live in production, and an enterprise Fleet Management System. I follow clean architecture: Controllers → Services → Repositories.
             </p>
             <p className="text-slate-400 text-sm leading-loose">
               I was selected for <span className="text-amber-400 font-medium">Amazon ML Summer School 2025</span> and have participated in national hackathons including Smart India Hackathon. I actively practice competitive programming on LeetCode, Codeforces, and CodeChef.
@@ -61,15 +61,15 @@ export default function AboutSection() {
                 className="flex items-center gap-3 p-3.5 rounded-xl border"
                 style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.2)' }}>
-                  <item.icon size={14} className="text-indigo-400" />
+                  style={{ background: 'rgba(37,99,235,0.12)', border: '1px solid rgba(37,99,235,0.2)' }}>
+                  <item.icon size={14} className="text-blue-400" />
                 </div>
                 <div className="min-w-0">
                   <p className="text-xs text-slate-600 mb-0.5">{item.label}</p>
                   {item.href ? (
                     <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined}
                       rel="noopener noreferrer"
-                      className="text-xs text-slate-300 hover:text-indigo-400 transition-colors truncate block">
+                      className="text-xs text-slate-300 hover:text-blue-400 transition-colors truncate block">
                       {item.value}
                     </a>
                   ) : (
@@ -90,13 +90,13 @@ export default function AboutSection() {
           <div
             className="rounded-2xl p-6 border"
             style={{
-              background: 'rgba(99,102,241,0.05)',
-              border: '1px solid rgba(99,102,241,0.15)',
+              background: 'rgba(37,99,235,0.05)',
+              border: '1px solid rgba(37,99,235,0.15)',
             }}
           >
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg,#6366f1,#8b5cf6)' }}>
+                style={{ background: 'linear-gradient(135deg,#1d4ed8,#2563eb)' }}>
                 <GraduationCap size={18} className="text-white" />
               </div>
               <div>
@@ -112,7 +112,7 @@ export default function AboutSection() {
 
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs text-slate-500">CGPA</span>
-                <span className="text-xs font-bold text-indigo-400">9.10 / 10.0</span>
+                <span className="text-xs font-bold text-blue-400">9.10 / 10.0</span>
               </div>
               <div className="h-1.5 rounded-full overflow-hidden bg-white/10">
                 <motion.div
@@ -120,7 +120,7 @@ export default function AboutSection() {
                   animate={inView ? { width: '91%' } : { width: 0 }}
                   transition={{ duration: 1.4, delay: 0.7, ease: 'easeOut' }}
                   className="h-full rounded-full"
-                  style={{ background: 'linear-gradient(90deg,#6366f1,#8b5cf6)' }}
+                  style={{ background: 'linear-gradient(90deg,#1d4ed8,#2563eb)' }}
                 />
               </div>
 
@@ -152,7 +152,7 @@ export default function AboutSection() {
                   <p className="text-xs text-slate-300 font-medium">GitHub</p>
                   <p className="text-xs text-slate-600 truncate">github.com/Sarth00718</p>
                 </div>
-                <ExternalLink size={12} className="text-slate-600 group-hover:text-indigo-400 transition-colors flex-shrink-0" />
+                <ExternalLink size={12} className="text-slate-600 group-hover:text-blue-400 transition-colors flex-shrink-0" />
               </motion.a>
 
               <motion.a
@@ -175,14 +175,14 @@ export default function AboutSection() {
                 href={`mailto:${PROFILE.email}`}
                 whileHover={{ x: 4 }}
                 className="flex items-center gap-3 p-3 rounded-xl border transition-all group"
-                style={{ border: '1px solid rgba(99,102,241,0.15)', background: 'rgba(99,102,241,0.05)' }}
+                style={{ border: '1px solid rgba(37,99,235,0.15)', background: 'rgba(37,99,235,0.05)' }}
               >
-                <Mail size={18} className="text-indigo-400 flex-shrink-0" />
+                <Mail size={18} className="text-blue-400 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   <p className="text-xs text-slate-300 font-medium">Email</p>
                   <p className="text-xs text-slate-600 truncate">{PROFILE.email}</p>
                 </div>
-                <ExternalLink size={12} className="text-slate-600 group-hover:text-indigo-400 transition-colors flex-shrink-0" />
+                <ExternalLink size={12} className="text-slate-600 group-hover:text-blue-400 transition-colors flex-shrink-0" />
               </motion.a>
             </div>
           </div>

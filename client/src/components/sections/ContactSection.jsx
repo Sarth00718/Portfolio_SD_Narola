@@ -9,14 +9,9 @@ import {
 import { PROFILE } from '@data/achievements';
 
 // ─── EmailJS Configuration ───────────────────────────────────────────────────
-// Replace with your actual EmailJS credentials from https://emailjs.com
-// 1. Sign up at emailjs.com
-// 2. Create an Email Service (Gmail / Outlook)
-// 3. Create an Email Template with variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
-// 4. Paste your Service ID, Template ID, and Public Key below
-const EMAILJS_SERVICE_ID  = 'service_portfolio';   // e.g. 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'template_contact';    // e.g. 'template_xyz789'
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';     // e.g. 'user_XXXXXXXXXXXXX'
+const EMAILJS_SERVICE_ID  = 'service_3od29mt';
+const EMAILJS_TEMPLATE_ID = 'template_whgvyum';
+const EMAILJS_PUBLIC_KEY  = 'sLdPRBAhWQdct-OzF';
 // ─────────────────────────────────────────────────────────────────────────────
 
 const SOCIAL_LINKS = [
@@ -39,7 +34,7 @@ const SOCIAL_LINKS = [
     label: 'Email',
     value: PROFILE.email,
     href: `mailto:${PROFILE.email}`,
-    hoverStyle: { borderColor: 'rgba(99,102,241,0.4)', color: '#a5b4fc' },
+    hoverStyle: { borderColor: 'rgba(37,99,235,0.4)', color: '#93c5fd' },
   },
   {
     icon: MapPin,
@@ -65,7 +60,7 @@ export default function ContactSection() {
   const formRef = useRef(null);
   const [form, setForm]     = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [status, setStatus] = useState('idle');
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const handleChange = (e) => {
@@ -85,7 +80,6 @@ export default function ContactSection() {
     setStatus('sending');
 
     try {
-      // EmailJS send — uses the named template variables
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -173,7 +167,7 @@ export default function ContactSection() {
             className="rounded-2xl p-4 border flex items-center gap-3"
             style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)' }}
           >
-            <Clock size={15} className="text-indigo-400 flex-shrink-0" />
+            <Clock size={15} className="text-blue-400 flex-shrink-0" />
             <div>
               <div className="text-sm font-semibold text-white">Responds within 24 hrs</div>
               <div className="text-xs text-slate-500">Feel free to reach out anytime</div>
@@ -241,7 +235,7 @@ export default function ContactSection() {
           >
             <h3 className="font-display font-bold text-white text-xl mb-2">Send a Message</h3>
             <p className="text-xs text-slate-500 mb-6">
-              Powered by <span className="text-indigo-400">EmailJS</span> — your message lands directly in my inbox.
+              Powered by <span className="text-blue-400">EmailJS</span> — your message lands directly in my inbox.
             </p>
 
             <AnimatePresence mode="wait">

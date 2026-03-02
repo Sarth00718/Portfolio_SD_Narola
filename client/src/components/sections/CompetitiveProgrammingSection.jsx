@@ -151,8 +151,8 @@ export default function CompetitiveProgrammingSection() {
         <div
           className="rounded-2xl p-6 border text-center"
           style={{
-            background: 'rgba(99,102,241,0.05)',
-            border: '1px solid rgba(99,102,241,0.15)',
+            background: 'rgba(37,99,235,0.05)',
+            border: '1px solid rgba(37,99,235,0.15)',
           }}
         >
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-4">Practice Focus Areas</p>

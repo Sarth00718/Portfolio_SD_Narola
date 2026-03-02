@@ -14,7 +14,7 @@ const STATS = [
 const SOCIAL = [
   { icon: Github, href: PROFILE.github, label: 'GitHub', hoverColor: '#e2e8f0' },
   { icon: Linkedin, href: PROFILE.linkedin, label: 'LinkedIn', hoverColor: '#60a5fa' },
-  { icon: Mail, href: `mailto:${PROFILE.email}`, label: 'Email', hoverColor: '#a5b4fc' },
+  { icon: Mail, href: `mailto:${PROFILE.email}`, label: 'Email', hoverColor: '#93c5fd' },
 ];
 
 export default function HeroSection() {
@@ -22,16 +22,16 @@ export default function HeroSection() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg,#0f172a 0%,#1e293b 60%,#0f172a 100%)' }}
+      style={{ background: 'linear-gradient(135deg,#0a0f1e 0%,#111827 60%,#0a0f1e 100%)' }}
     >
       {/* Neural network background */}
       <NeuralCanvas />
 
       {/* Ambient glows */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.08), transparent 70%)', filter: 'blur(80px)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%)', filter: 'blur(80px)' }} />
       <div className="absolute bottom-1/3 left-1/5 w-80 h-80 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.06), transparent 70%)', filter: 'blur(60px)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(14,165,233,0.06), transparent 70%)', filter: 'blur(60px)' }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 w-full">
         <div className="grid lg:grid-cols-5 gap-12 items-center">
@@ -46,7 +46,7 @@ export default function HeroSection() {
               className="mb-6"
             >
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase"
-                style={{ background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.25)', color: '#a5b4fc' }}>
+                style={{ background: 'rgba(37,99,235,0.12)', border: '1px solid rgba(37,99,235,0.25)', color: '#93c5fd' }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Open to Opportunities · 2026 Graduate
               </span>
@@ -61,7 +61,7 @@ export default function HeroSection() {
               <h1 className="font-display font-black leading-tight mb-2">
                 <span className="text-4xl sm:text-5xl lg:text-6xl text-white block">Hi, I'm</span>
                 <span className="text-5xl sm:text-6xl lg:text-7xl block"
-                  style={{ background: 'linear-gradient(135deg,#818cf8 0%,#a78bfa 50%,#38bdf8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  style={{ background: 'linear-gradient(135deg,#60a5fa 0%,#38bdf8 50%,#0ea5e9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                   Sarth Narola
                 </span>
               </h1>
@@ -85,7 +85,7 @@ export default function HeroSection() {
                 wrapper="span"
                 speed={55}
                 repeat={Infinity}
-                className="text-base sm:text-lg font-mono text-indigo-300"
+                className="text-base sm:text-lg font-mono text-blue-300"
               />
             </motion.div>
 
@@ -107,7 +107,7 @@ export default function HeroSection() {
               className="flex flex-wrap gap-3 mb-10"
             >
               <motion.button
-                whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(99,102,241,0.5)' }}
+                whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(37,99,235,0.5)' }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-primary flex items-center gap-2"
@@ -117,7 +117,7 @@ export default function HeroSection() {
               </motion.button>
 
               <motion.a
-                href="/23BCE194_SARTH_NAROLA.pdf"
+                href="/resume.pdf"
                 download
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
@@ -185,7 +185,7 @@ export default function HeroSection() {
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
                 >
                   <div className="font-display font-black text-2xl text-white mb-0.5"
-                    style={{ background: 'linear-gradient(135deg,#818cf8,#38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                    style={{ background: 'linear-gradient(135deg,#60a5fa,#0ea5e9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                     {stat.value}
                   </div>
                   <div className="text-xs text-slate-500">{stat.label}</div>
@@ -200,11 +200,11 @@ export default function HeroSection() {
               transition={{ delay: 0.7 }}
               whileHover={{ y: -3 }}
               className="rounded-2xl p-5 border transition-all"
-              style={{ background: 'rgba(99,102,241,0.07)', border: '1px solid rgba(99,102,241,0.18)' }}
+              style={{ background: 'rgba(37,99,235,0.07)', border: '1px solid rgba(37,99,235,0.18)' }}
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
-                  style={{ background: 'linear-gradient(135deg,#6366f1,#8b5cf6)' }}>
+                  style={{ background: 'linear-gradient(135deg,#1d4ed8,#2563eb)' }}>
                   🎓
                 </div>
                 <div>
@@ -212,8 +212,8 @@ export default function HeroSection() {
                   <div className="text-xs text-slate-500">B.Tech CSE · 2022–2026</div>
                 </div>
                 <div className="ml-auto">
-                  <span className="text-xs font-bold text-indigo-400 px-2 py-0.5 rounded-lg"
-                    style={{ background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.25)' }}>
+                  <span className="text-xs font-bold text-blue-400 px-2 py-0.5 rounded-lg"
+                    style={{ background: 'rgba(37,99,235,0.15)', border: '1px solid rgba(37,99,235,0.25)' }}>
                     CGPA: 9.10
                   </span>
                 </div>

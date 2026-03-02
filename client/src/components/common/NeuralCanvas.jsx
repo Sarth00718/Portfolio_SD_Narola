@@ -74,8 +74,8 @@ export default function NeuralCanvas() {
                     if (dist < MAX_DIST) {
                         const opacity = (1 - dist / MAX_DIST) * 0.35;
                         const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
-                        gradient.addColorStop(0, `rgba(99,102,241,${opacity})`);
-                        gradient.addColorStop(0.5, `rgba(139,92,246,${opacity * 0.8})`);
+                        gradient.addColorStop(0, `rgba(37,99,235,${opacity})`);
+                        gradient.addColorStop(0.5, `rgba(14,165,233,${opacity * 0.8})`);
                         gradient.addColorStop(1, `rgba(6,182,212,${opacity})`);
 
                         ctx.beginPath();
@@ -95,8 +95,8 @@ export default function NeuralCanvas() {
 
                 // Glow halo
                 const halo = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, radius * 6);
-                halo.addColorStop(0, `rgba(99,102,241,${0.2 * glow})`);
-                halo.addColorStop(1, 'rgba(99,102,241,0)');
+                halo.addColorStop(0, `rgba(37,99,235,${0.2 * glow})`);
+                halo.addColorStop(1, 'rgba(37,99,235,0)');
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, radius * 6, 0, Math.PI * 2);
                 ctx.fillStyle = halo;
@@ -104,8 +104,8 @@ export default function NeuralCanvas() {
 
                 // Node core
                 const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, radius);
-                grad.addColorStop(0, `rgba(200,200,255,${0.8 * glow})`);
-                grad.addColorStop(1, `rgba(99,102,241,${0.5 * glow})`);
+                grad.addColorStop(0, `rgba(147,197,253,${0.8 * glow})`);
+                grad.addColorStop(1, `rgba(37,99,235,${0.5 * glow})`);
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
                 ctx.fillStyle = grad;
