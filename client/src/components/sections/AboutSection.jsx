@@ -35,16 +35,16 @@ export default function AboutSection() {
         >
           {/* Bio card */}
           <div
-            className="rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 border"
+            className="rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border"
             style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
           >
-            <p className="text-slate-300 text-xs sm:text-sm leading-loose mb-4 sm:mb-5">
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 break-words">
               I'm <span className="text-white font-semibold">Sarth Narola</span> ({PROFILE.rollNo}), a final-year B.Tech CSE student at <span className="text-blue-400 font-medium">Nirma University</span> with a CGPA of <span className="text-blue-400 font-bold">9.10</span>. I am passionate about building production-ready web applications and AI-integrated systems.
             </p>
-            <p className="text-slate-400 text-xs sm:text-sm leading-loose mb-4 sm:mb-5">
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 break-words">
               I've built multiple full-stack projects including an <span className="text-sky-400 font-medium">AI Financial Document Chatbot</span> using RAG + LangChain + FAISS, a <span className="text-sky-400 font-medium">Smart Expense Tracker</span> live in production, and an enterprise Fleet Management System. I follow clean architecture: Controllers → Services → Repositories.
             </p>
-            <p className="text-slate-400 text-xs sm:text-sm leading-loose">
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed break-words">
               I was selected for <span className="text-amber-400 font-medium">Amazon ML Summer School 2025</span> and have participated in national hackathons including Smart India Hackathon. I actively practice competitive programming on LeetCode, Codeforces, and CodeChef.
             </p>
           </div>
@@ -109,7 +109,7 @@ export default function AboutSection() {
             <div>
               <p className="text-sm font-bold text-white mb-1">Nirma University</p>
               <p className="text-xs text-slate-400 mb-1">B.Tech Computer Science & Engineering</p>
-              <p className="text-xs text-slate-500 mb-4">2022 – 2026 · Ahmedabad, Gujarat</p>
+              <p className="text-xs text-slate-500 mb-4">2022 – 2027 · Ahmedabad, Gujarat</p>
 
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs text-slate-500">CGPA</span>

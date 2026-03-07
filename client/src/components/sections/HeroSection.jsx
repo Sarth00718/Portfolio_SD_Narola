@@ -33,20 +33,33 @@ export default function HeroSection() {
       <div className="absolute bottom-1/3 left-1/5 w-80 h-80 rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(14,165,233,0.06), transparent 70%)', filter: 'blur(60px)' }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 w-full">
-        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-center">
 
           {/* Left — Text */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 space-y-4 sm:space-y-5 md:space-y-6">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[9px] sm:text-xs font-semibold tracking-wider uppercase"
+                style={{ background: 'rgba(37,99,235,0.12)', border: '1px solid rgba(37,99,235,0.25)', color: '#93c5fd' }}>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+                <span className="whitespace-nowrap">2027 Graduate</span>
+              </span>
+            </motion.div>
+
             {/* Name */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="font-display font-black leading-tight mb-2">
-                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white block">Hi, I'm</span>
-                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl block"
+              <h1 className="font-display font-black leading-[1.1] break-words">
+                <span className="text-lg sm:text-2xl md:text-4xl lg:text-5xl text-white block mb-1 sm:mb-2">Hi, I'm</span>
+                <span className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl block"
                   style={{ background: 'linear-gradient(135deg,#60a5fa 0%,#38bdf8 50%,#0ea5e9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                   Sarth Narola
                 </span>
@@ -58,20 +71,17 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="h-8 sm:h-10 mb-4 sm:mb-5"
+              className="min-h-[20px] sm:min-h-[28px] flex items-center"
             >
               <TypeAnimation
                 sequence={[
-                  '> Full Stack Developer', 2000,
-                  '> AI / ML Enthusiast', 2000,
                   '> MERN Stack Developer', 2000,
-                  '> LangChain + RAG Builder', 2000,
                   '> Final Year Engineer', 2000,
                 ]}
                 wrapper="span"
                 speed={55}
                 repeat={Infinity}
-                className="text-sm sm:text-base md:text-lg font-mono text-blue-300"
+                className="text-xs sm:text-base md:text-lg font-mono text-blue-300"
               />
             </motion.div>
 
@@ -80,9 +90,9 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed mb-6 sm:mb-8 max-w-lg"
+              className="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-full lg:max-w-lg pr-2"
             >
-              {PROFILE.tagline}. Specialized in building <span className="text-slate-300">production-ready MERN applications</span> and <span className="text-slate-300">AI-integrated pipelines</span>.
+              Building Scalable, Production-Ready Systems with Modern Web & AI. Specialized in <span className="text-slate-300">MERN applications</span> and <span className="text-slate-300">AI-integrated pipelines</span>.
             </motion.p>
 
             {/* CTAs */}
@@ -90,14 +100,14 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8"
+              className="flex flex-wrap gap-2 sm:gap-3 items-start pt-1"
             >
               <motion.button
                 whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(37,99,235,0.5)' }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3"
-                aria-label="View Projects"
+                className="btn-primary flex items-center gap-1.5 text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-3 shadow-lg"
+                aria-label="View Projects Section"
               >
                 View Projects
                 <ChevronRight size={14} className="sm:w-4 sm:h-4" />
@@ -108,8 +118,8 @@ export default function HeroSection() {
                 download
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                className="btn-secondary flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3"
-                aria-label="Download Resume"
+                className="btn-secondary flex items-center gap-1.5 text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-3"
+                aria-label="Download Resume PDF"
               >
                 <Download size={13} className="sm:w-3.5 sm:h-3.5" />
                 Resume
@@ -119,8 +129,8 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-outline flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3"
-                aria-label="Contact Me"
+                className="btn-outline flex items-center gap-1.5 text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-3"
+                aria-label="Navigate to Contact Section"
               >
                 <Mail size={13} className="sm:w-3.5 sm:h-3.5" />
                 Contact
@@ -132,9 +142,9 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="flex items-center gap-4"
+              className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 pt-1"
             >
-              <span className="text-xs text-slate-600 uppercase tracking-widest">Find me on</span>
+              <span className="text-[9px] sm:text-xs text-slate-600 uppercase tracking-widest">Find me on</span>
               <div className="flex gap-2">
                 {SOCIAL.map(({ icon: Icon, href, label, hoverColor }) => (
                   <motion.a
@@ -144,10 +154,10 @@ export default function HeroSection() {
                     rel="noopener noreferrer"
                     aria-label={label}
                     whileHover={{ scale: 1.15, y: -2 }}
-                    className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-400 hover:text-white transition-all border"
+                    className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl text-slate-400 hover:text-white transition-all border"
                     style={{ border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.04)' }}
                   >
-                    <Icon size={16} />
+                    <Icon size={15} className="sm:w-4 sm:h-4" />
                   </motion.a>
                 ))}
               </div>
@@ -159,10 +169,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="lg:col-span-2 space-y-4"
+            className="lg:col-span-2 space-y-3 sm:space-y-4 mt-8 lg:mt-0 w-full"
           >
             {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {STATS.map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -170,14 +180,14 @@ export default function HeroSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + i * 0.08 }}
                   whileHover={{ y: -4, scale: 1.03 }}
-                  className="rounded-2xl p-4 text-center border transition-all"
+                  className="rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border transition-all"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
                 >
-                  <div className="font-display font-black text-2xl text-white mb-0.5"
+                  <div className="font-display font-black text-lg sm:text-xl md:text-2xl text-white mb-0.5"
                     style={{ background: 'linear-gradient(135deg,#60a5fa,#0ea5e9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                     {stat.value}
                   </div>
-                  <div className="text-xs text-slate-500">{stat.label}</div>
+                  <div className="text-[8px] sm:text-[10px] md:text-xs text-slate-500 leading-tight">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -188,28 +198,28 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
               whileHover={{ y: -3 }}
-              className="rounded-2xl p-5 border transition-all"
+              className="rounded-lg sm:rounded-xl p-3 sm:p-4 border transition-all"
               style={{ background: 'rgba(37,99,235,0.07)', border: '1px solid rgba(37,99,235,0.18)' }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
+              <div className="flex items-start gap-2 sm:gap-3 mb-2 sm:mb-2.5">
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
                   style={{ background: 'linear-gradient(135deg,#1d4ed8,#2563eb)' }}>
                   🎓
                 </div>
-                <div>
-                  <div className="text-sm font-bold text-white">Nirma University</div>
-                  <div className="text-xs text-slate-500">B.Tech CSE · 2022–2026</div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[10px] sm:text-xs md:text-sm font-bold text-white leading-tight">Nirma University</div>
+                  <div className="text-[8px] sm:text-[10px] md:text-xs text-slate-500 mt-0.5">B.Tech CSE · 2022–2027</div>
                 </div>
-                <div className="ml-auto">
-                  <span className="text-xs font-bold text-blue-400 px-2 py-0.5 rounded-lg"
+                <div className="flex-shrink-0">
+                  <span className="text-[8px] sm:text-[10px] md:text-xs font-bold text-blue-400 px-1.5 sm:px-2 py-0.5 rounded-md whitespace-nowrap"
                     style={{ background: 'rgba(37,99,235,0.15)', border: '1px solid rgba(37,99,235,0.25)' }}>
-                    CGPA: 9.10
+                    9.10
                   </span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1 sm:gap-1.5">
                 {['React', 'Node.js', 'MongoDB', 'LangChain', 'FastAPI', 'FAISS'].map(t => (
-                  <span key={t} className="px-2.5 py-1 rounded-lg text-xs text-slate-400 border"
+                  <span key={t} className="px-1.5 sm:px-2 py-0.5 rounded-md text-[8px] sm:text-[10px] md:text-xs text-slate-400 border"
                     style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
                     {t}
                   </span>
@@ -223,13 +233,13 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85 }}
               whileHover={{ y: -3 }}
-              className="rounded-2xl p-4 border flex items-center gap-3 transition-all"
+              className="rounded-lg sm:rounded-xl p-3 sm:p-3.5 border flex items-start gap-2 sm:gap-2.5 transition-all"
               style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.18)' }}
             >
-              <span className="text-2xl">🏅</span>
-              <div>
-                <div className="text-sm font-bold text-amber-400">Amazon ML Summer School 2025</div>
-                <div className="text-xs text-slate-500">Selected from national pool of top engineering students</div>
+              <span className="text-lg sm:text-xl flex-shrink-0">🏅</span>
+              <div className="flex-1 min-w-0">
+                <div className="text-[10px] sm:text-xs md:text-sm font-bold text-amber-400 leading-tight mb-0.5 sm:mb-1">Amazon ML Summer School 2025</div>
+                <div className="text-[8px] sm:text-[10px] md:text-xs text-slate-500 leading-relaxed">Selected from national pool of top engineering students</div>
               </div>
             </motion.div>
           </motion.div>
@@ -238,7 +248,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-fit flex flex-col items-center gap-2 cursor-pointer"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}

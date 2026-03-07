@@ -13,7 +13,7 @@ export const PROFILE = {
   university: "Nirma University",
   degree: "B.Tech Computer Science & Engineering",
   cgpa: "9.10",
-  batch: "2022–2026",
+  batch: "2022–2027",
   rollNo: "23BCE194",
   github: "https://github.com/Sarth00718",
   linkedin: "https://linkedin.com/in/sarth-narola-223002323",
@@ -38,7 +38,7 @@ export const ACHIEVEMENTS = [
   {
     id: "cgpa",
     title: "Academic Excellence — CGPA 9.10",
-    subtitle: "Nirma University · B.Tech CSE · 2022–2026",
+    subtitle: "Nirma University · B.Tech CSE · 2022–2027",
     description:
       "Maintaining a 9.10 CGPA across all semesters at Nirma University, consistently ranking among the top performers in the Computer Science & Engineering department. Strong foundation across DSA, DBMS, OS, Networks, and ML coursework.",
     icon: "🎓",
@@ -47,7 +47,7 @@ export const ACHIEVEMENTS = [
     borderColor: "border-blue-500/30",
     accentColor: "#3b82f6",
     badge: "9.10 GPA",
-    year: 2026,
+    year: 2027,
     type: "academic",
   },
   {
@@ -87,7 +87,7 @@ export const EDUCATION = [
     degree: "B.Tech — Computer Science & Engineering",
     institution: "Nirma University",
     location: "Ahmedabad, Gujarat",
-    period: "2022 – 2026",
+    period: "2022 – 2027",
     cgpa: "9.10 / 10.0",
     highlights: [
       "Core: Data Structures & Algorithms, DBMS, OS, Computer Networks",

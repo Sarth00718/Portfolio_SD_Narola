@@ -133,17 +133,17 @@ export default function ContactSection() {
           transition={{ delay: 0.2 }}
           className="text-slate-400 max-w-lg mx-auto mt-4 text-sm leading-relaxed"
         >
-          Looking for full-time SDE opportunities for 2026. Open to internships and interesting project collaborations too.
+          Looking for full-time SDE opportunities for 2027. Open to internships and interesting project collaborations too.
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10 w-full">
         {/* Left — Info */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ delay: 0.2 }}
-          className="lg:col-span-2 space-y-3 sm:space-y-4"
+          className="lg:col-span-2 space-y-3 sm:space-y-4 w-full"
         >
           {/* Availability */}
           <div
@@ -157,7 +157,7 @@ export default function ContactSection() {
             <div>
               <div className="text-sm font-bold text-emerald-400 mb-1">Available for Opportunities</div>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Final-year student actively looking for <strong className="text-slate-300">SDE full-time roles</strong> starting mid-2026. Also open to internships.
+                Final-year student actively looking for <strong className="text-slate-300">SDE full-time roles</strong> starting mid-2027. Also open to internships.
               </p>
             </div>
           </div>
@@ -227,10 +227,10 @@ export default function ContactSection() {
           initial={{ opacity: 0, x: 30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ delay: 0.3 }}
-          className="lg:col-span-3"
+          className="lg:col-span-3 w-full"
         >
           <div
-            className="rounded-2xl p-8 border"
+            className="rounded-2xl p-5 sm:p-8 border"
             style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
           >
             <h3 className="font-display font-bold text-white text-xl mb-2">Send a Message</h3>

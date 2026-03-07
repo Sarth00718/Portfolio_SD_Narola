@@ -62,6 +62,15 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Skip to main content - Accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold focus:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        style={{ background: 'linear-gradient(135deg,#1d4ed8,#2563eb)' }}
+      >
+        Skip to main content
+      </a>
+
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -79,17 +88,16 @@ export default function Navbar() {
         }
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-16">{/* Logo */}
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center gap-2 sm:gap-2.5"
+              className="flex items-center gap-1.5 sm:gap-2"
               aria-label="Scroll to top"
             >
               <div
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-xs font-black text-white flex-shrink-0"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-[10px] sm:text-xs font-black text-white flex-shrink-0"
                 style={{
                   background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
                 }}
@@ -98,13 +106,13 @@ export default function Navbar() {
               </div>
               <div className="hidden xs:block text-left">
                 <div
-                  className="text-xs sm:text-sm font-bold font-display leading-tight"
+                  className="text-[11px] sm:text-sm font-bold font-display leading-tight"
                   style={{ color: "var(--text-primary)" }}
                 >
                   Sarth Narola
                 </div>
                 <div
-                  className="text-[10px] sm:text-xs leading-tight"
+                  className="text-[9px] sm:text-xs leading-tight"
                   style={{ color: "var(--text-muted)" }}
                 >
                   Full Stack · AI
@@ -210,7 +218,7 @@ export default function Navbar() {
               <a
                 href="/resume.pdf"
                 download
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-xs font-semibold text-white transition-all hover:shadow-lg"
+                className="hidden sm:inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs font-semibold text-white transition-all hover:shadow-lg"
                 style={{
                   background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
                 }}

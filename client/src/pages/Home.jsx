@@ -47,9 +47,9 @@ export default function Home() {
   return (
     <HelmetProvider>
       <SEOMeta />
-      <div className="relative min-h-screen">
+      <div className="relative min-h-screen w-full overflow-x-hidden">
         <Navbar />
-        <main>
+        <main id="main-content" role="main">
           <HeroSection />
           <Suspense fallback={<SectionLoader />}>
             <AboutSection />

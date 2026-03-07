@@ -127,8 +127,8 @@ export default function ProjectsSection() {
         </motion.p>
       </div>
 
-      {/* Responsive grid: 1 col mobile, 2 col tablet, 2 col desktop */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
+      {/* Responsive grid: 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 w-full">
         {CORE_PROJECTS.map((project, i) => (
           <CoreCard key={project.id} project={project} index={i} />
         ))}
