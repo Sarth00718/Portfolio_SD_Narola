@@ -78,31 +78,33 @@ export default function Navbar() {
             : { background: "transparent" }
         }
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
             <motion.button
               whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center gap-2.5"
+              className="flex items-center gap-2 sm:gap-2.5"
+              aria-label="Scroll to top"
             >
               <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-black text-white flex-shrink-0"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-xs font-black text-white flex-shrink-0"
                 style={{
                   background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
                 }}
               >
                 SN
               </div>
-              <div className="hidden sm:block text-left">
+              <div className="hidden xs:block text-left">
                 <div
-                  className="text-sm font-bold font-display leading-tight"
+                  className="text-xs sm:text-sm font-bold font-display leading-tight"
                   style={{ color: "var(--text-primary)" }}
                 >
                   Sarth Narola
                 </div>
                 <div
-                  className="text-xs leading-tight"
+                  className="text-[10px] sm:text-xs leading-tight"
                   style={{ color: "var(--text-muted)" }}
                 >
                   Full Stack · AI
@@ -111,7 +113,7 @@ export default function Navbar() {
             </motion.button>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-0.5">
+            <nav className="hidden lg:flex items-center gap-0.5" role="navigation" aria-label="Main navigation">
               {NAV_ITEMS.map((item) => {
                 const isActive = activeHash === item.href;
                 return (
@@ -119,13 +121,15 @@ export default function Navbar() {
                     key={item.href}
                     onClick={() => scrollTo(item.href)}
                     title={item.title}
-                    className="relative px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200"
+                    className="relative px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 hover:bg-white/5"
                     style={{
                       color: isActive ? "#93c5fd" : "var(--text-secondary)",
                       background: isActive
                         ? "rgba(37,99,235,0.1)"
                         : "transparent",
                     }}
+                    aria-label={`Navigate to ${item.title || item.label}`}
+                    aria-current={isActive ? "page" : undefined}
                   >
                     {item.label}
                     {isActive && (
@@ -143,15 +147,16 @@ export default function Navbar() {
             </nav>
 
             {/* Right actions */}
-            <div className="flex items-center gap-1.5">
-              {/* Social icons */}
+            <div className="flex items-center gap-1 sm:gap-1.5">
+              {/* Social icons - hidden on mobile */}
               <div className="hidden md:flex items-center gap-0.5">
                 <a
                   href={PROFILE.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   title="GitHub Profile"
-                  className="w-8 h-8 flex items-center justify-center rounded-lg transition-all"
+                  aria-label="GitHub Profile"
+                  className="w-8 h-8 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
                   style={{ color: "var(--text-muted)" }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = "var(--text-primary)")
@@ -167,7 +172,8 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="LinkedIn Profile"
-                  className="w-8 h-8 flex items-center justify-center rounded-lg transition-all"
+                  aria-label="LinkedIn Profile"
+                  className="w-8 h-8 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
                   style={{ color: "var(--text-muted)" }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = "#60a5fa")
@@ -185,28 +191,30 @@ export default function Navbar() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
-                className="w-8 h-8 flex items-center justify-center rounded-lg border transition-all"
+                className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg border transition-all"
                 style={{
                   borderColor: "var(--border-glass)",
                   background: "var(--bg-card)",
                 }}
                 title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
               >
                 {isDark ? (
-                  <Sun size={14} className="text-amber-400" />
+                  <Sun size={13} className="sm:w-3.5 sm:h-3.5 text-amber-400" />
                 ) : (
-                  <Moon size={14} className="text-blue-600" />
+                  <Moon size={13} className="sm:w-3.5 sm:h-3.5 text-blue-600" />
                 )}
               </motion.button>
 
-              {/* Resume */}
+              {/* Resume - hidden on smallest screens */}
               <a
                 href="/resume.pdf"
                 download
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold text-white"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-xs font-semibold text-white transition-all hover:shadow-lg"
                 style={{
                   background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
                 }}
+                aria-label="Download Resume"
               >
                 Resume
               </a>
@@ -214,14 +222,15 @@ export default function Navbar() {
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg transition-all"
+                className="lg:hidden w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg transition-all"
                 style={{
                   color: "var(--text-secondary)",
                   background: "var(--bg-card)",
                 }}
-                aria-label="Toggle menu"
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
               >
-                {mobileOpen ? <X size={17} /> : <Menu size={17} />}
+                {mobileOpen ? <X size={16} /> : <Menu size={16} />}
               </button>
             </div>
           </div>
@@ -236,7 +245,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 lg:hidden"
+            className="fixed top-14 sm:top-16 left-0 right-0 z-40 lg:hidden max-h-[calc(100vh-3.5rem)] sm:max-h-[calc(100vh-4rem)] overflow-y-auto"
             style={{
               background: isDark
                 ? "rgba(10,15,30,0.97)"
@@ -244,37 +253,39 @@ export default function Navbar() {
               backdropFilter: "blur(20px)",
               borderBottom: `1px solid ${isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)"}`,
             }}
+            role="navigation"
+            aria-label="Mobile navigation"
           >
             <div className="px-4 py-4 space-y-0.5">
-              {NAV_ITEMS.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollTo(item.href)}
-                  className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all"
-                  style={{ color: "var(--text-secondary)" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "var(--text-primary)";
-                    e.currentTarget.style.background = "var(--bg-card)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "var(--text-secondary)";
-                    e.currentTarget.style.background = "transparent";
-                  }}
-                >
-                  {item.title || item.label}
-                </button>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const isActive = activeHash === item.href;
+                return (
+                  <button
+                    key={item.href}
+                    onClick={() => scrollTo(item.href)}
+                    className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all"
+                    style={{
+                      color: isActive ? "#93c5fd" : "var(--text-secondary)",
+                      background: isActive ? "rgba(37,99,235,0.1)" : "transparent",
+                    }}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.title || item.label}
+                  </button>
+                );
+              })}
               {/* Mobile social */}
               <div
-                className="flex gap-4 pt-3 px-4 border-t mt-2"
+                className="flex flex-wrap gap-3 pt-3 px-4 border-t mt-2"
                 style={{ borderColor: "var(--border-glass)" }}
               >
                 <a
                   href={PROFILE.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs"
+                  className="flex items-center gap-1.5 text-xs hover:text-white transition-colors"
                   style={{ color: "var(--text-muted)" }}
+                  aria-label="GitHub Profile"
                 >
                   <Github size={13} /> GitHub
                 </a>
@@ -282,15 +293,17 @@ export default function Navbar() {
                   href={PROFILE.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs"
+                  className="flex items-center gap-1.5 text-xs hover:text-blue-400 transition-colors"
                   style={{ color: "var(--text-muted)" }}
+                  aria-label="LinkedIn Profile"
                 >
                   <Linkedin size={13} /> LinkedIn
                 </a>
                 <a
                   href="/resume.pdf"
                   download
-                  className="flex items-center gap-1.5 text-xs text-blue-400"
+                  className="flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                  aria-label="Download Resume"
                 >
                   Resume ↓
                 </a>

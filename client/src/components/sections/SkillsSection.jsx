@@ -41,8 +41,8 @@ export default function SkillsSection() {
         </motion.p>
       </div>
 
-      {/* Category Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {/* Category Grid: 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {SKILL_CATEGORIES.map((cat, catIdx) => (
           <motion.div
             key={cat.id}

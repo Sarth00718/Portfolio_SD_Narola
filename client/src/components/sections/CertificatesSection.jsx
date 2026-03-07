@@ -383,7 +383,7 @@ function CertStats({ inView }) {
   ];
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-12">
+    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mb-10 sm:mb-12">
       {stats.map((stat, i) => (
         <motion.div
           key={stat.label}
@@ -391,7 +391,7 @@ function CertStats({ inView }) {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 + i * 0.08 }}
           whileHover={{ y: -3, scale: 1.02 }}
-          className="relative rounded-2xl p-4 border text-center overflow-hidden group"
+          className="relative rounded-xl sm:rounded-2xl p-3 sm:p-4 border text-center overflow-hidden group"
           style={{
             background: "rgba(255,255,255,0.03)",
             border: "1px solid rgba(255,255,255,0.08)",
@@ -404,9 +404,9 @@ function CertStats({ inView }) {
                 "radial-gradient(circle at 50% 0%, rgba(37,99,235,0.08), transparent 70%)",
             }}
           />
-          <span className="text-xl mb-1 block">{stat.icon}</span>
+          <span className="text-lg sm:text-xl mb-1 block">{stat.icon}</span>
           <motion.span
-            className="text-2xl font-black font-display block"
+            className="text-xl sm:text-2xl font-black font-display block"
             style={{
               background: "linear-gradient(135deg, #60a5fa, #0ea5e9)",
               WebkitBackgroundClip: "text",
@@ -416,7 +416,7 @@ function CertStats({ inView }) {
           >
             {inView ? stat.value : 0}
           </motion.span>
-          <span className="text-xs text-slate-500">{stat.label}</span>
+          <span className="text-[10px] sm:text-xs text-slate-500">{stat.label}</span>
         </motion.div>
       ))}
     </div>
@@ -523,10 +523,10 @@ export default function CertificatesSection() {
           onSelect={setActiveCategory}
         />
 
-        {/* Grid */}
+        {/* Grid - 1 col mobile, 2 col tablet, 3 col desktop */}
         <motion.div
           layout
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 relative z-10"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((cert, i) => (

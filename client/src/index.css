@@ -99,7 +99,7 @@
 
   /* ── Buttons ── */
   .btn-primary {
-    @apply relative overflow-hidden px-6 py-3 rounded-xl font-semibold text-white text-sm tracking-wide cursor-pointer transition-all duration-300;
+    @apply relative overflow-hidden px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold text-white text-xs sm:text-sm tracking-wide cursor-pointer transition-all duration-300;
     background: linear-gradient(135deg, #1d4ed8, #2563eb, #0ea5e9);
     background-size: 200% 200%;
     animation: gradient-x 6s ease infinite;
@@ -115,7 +115,7 @@
   .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
   .btn-secondary {
-    @apply px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 cursor-pointer;
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 cursor-pointer;
     border: 1px solid var(--border-glass);
     background: var(--bg-card);
     color: var(--text-secondary);
@@ -130,7 +130,7 @@
   }
 
   .btn-outline {
-    @apply px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 cursor-pointer;
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 cursor-pointer;
     border: 1px solid rgba(37,99,235,0.4);
     color: #60a5fa;
     background: transparent;
@@ -144,7 +144,7 @@
 
   /* ── Section wrappers ── */
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24;
   }
 
   .section-tag {
@@ -155,7 +155,7 @@
   }
 
   .section-title {
-    @apply font-display text-3xl sm:text-4xl md:text-5xl font-bold;
+    @apply font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
     background: linear-gradient(135deg, var(--text-primary) 0%, #93c5fd 60%, #60a5fa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

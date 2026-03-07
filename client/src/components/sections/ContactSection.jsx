@@ -137,13 +137,13 @@ export default function ContactSection() {
         </motion.p>
       </div>
 
-      <div className="grid lg:grid-cols-5 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10">
         {/* Left — Info */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ delay: 0.2 }}
-          className="lg:col-span-2 space-y-4"
+          className="lg:col-span-2 space-y-3 sm:space-y-4"
         >
           {/* Availability */}
           <div
@@ -266,10 +266,11 @@ export default function ContactSection() {
                   onSubmit={handleSubmit}
                   className="space-y-5"
                 >
-                  <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label className="block text-xs text-slate-400 mb-2 font-medium">Your Name *</label>
+                      <label htmlFor="contact-name" className="block text-xs text-slate-400 mb-2 font-medium">Your Name *</label>
                       <input
+                        id="contact-name"
                         type="text"
                         name="name"
                         value={form.name}
@@ -277,16 +278,20 @@ export default function ContactSection() {
                         placeholder="John Doe"
                         className={`form-input ${errors.name ? 'border-rose-500/50' : ''}`}
                         disabled={status === 'sending'}
+                        aria-required="true"
+                        aria-invalid={!!errors.name}
+                        aria-describedby={errors.name ? "name-error" : undefined}
                       />
                       {errors.name && (
-                        <p className="mt-1 text-xs text-rose-400 flex items-center gap-1">
+                        <p id="name-error" className="mt-1 text-xs text-rose-400 flex items-center gap-1" role="alert">
                           <AlertCircle size={10} /> {errors.name}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-xs text-slate-400 mb-2 font-medium">Email *</label>
+                      <label htmlFor="contact-email" className="block text-xs text-slate-400 mb-2 font-medium">Email *</label>
                       <input
+                        id="contact-email"
                         type="email"
                         name="email"
                         value={form.email}
@@ -294,9 +299,12 @@ export default function ContactSection() {
                         placeholder="you@company.com"
                         className={`form-input ${errors.email ? 'border-rose-500/50' : ''}`}
                         disabled={status === 'sending'}
+                        aria-required="true"
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? "email-error" : undefined}
                       />
                       {errors.email && (
-                        <p className="mt-1 text-xs text-rose-400 flex items-center gap-1">
+                        <p id="email-error" className="mt-1 text-xs text-rose-400 flex items-center gap-1" role="alert">
                           <AlertCircle size={10} /> {errors.email}
                         </p>
                       )}
@@ -304,8 +312,9 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs text-slate-400 mb-2 font-medium">Subject *</label>
+                    <label htmlFor="contact-subject" className="block text-xs text-slate-400 mb-2 font-medium">Subject *</label>
                     <input
+                      id="contact-subject"
                       type="text"
                       name="subject"
                       value={form.subject}
@@ -313,17 +322,21 @@ export default function ContactSection() {
                       placeholder="Job Opportunity / Internship / Collaboration"
                       className={`form-input ${errors.subject ? 'border-rose-500/50' : ''}`}
                       disabled={status === 'sending'}
+                      aria-required="true"
+                      aria-invalid={!!errors.subject}
+                      aria-describedby={errors.subject ? "subject-error" : undefined}
                     />
                     {errors.subject && (
-                      <p className="mt-1 text-xs text-rose-400 flex items-center gap-1">
+                      <p id="subject-error" className="mt-1 text-xs text-rose-400 flex items-center gap-1" role="alert">
                         <AlertCircle size={10} /> {errors.subject}
                       </p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-xs text-slate-400 mb-2 font-medium">Message *</label>
+                    <label htmlFor="contact-message" className="block text-xs text-slate-400 mb-2 font-medium">Message *</label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       value={form.message}
                       onChange={handleChange}
@@ -331,9 +344,12 @@ export default function ContactSection() {
                       placeholder="Tell me about the role, project, or collaboration you have in mind..."
                       className={`form-input resize-none ${errors.message ? 'border-rose-500/50' : ''}`}
                       disabled={status === 'sending'}
+                      aria-required="true"
+                      aria-invalid={!!errors.message}
+                      aria-describedby={errors.message ? "message-error" : undefined}
                     />
                     {errors.message && (
-                      <p className="mt-1 text-xs text-rose-400 flex items-center gap-1">
+                      <p id="message-error" className="mt-1 text-xs text-rose-400 flex items-center gap-1" role="alert">
                         <AlertCircle size={10} /> {errors.message}
                       </p>
                     )}

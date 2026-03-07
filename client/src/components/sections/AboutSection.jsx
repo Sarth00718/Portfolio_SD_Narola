@@ -27,30 +27,30 @@ export default function AboutSection() {
         <div className="gradient-divider" />
       </div>
 
-      <div className="grid lg:grid-cols-5 gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10 items-start">
         {/* Left — Bio */}
         <motion.div
           variants={fadeUp} custom={2} initial="hidden" animate={inView ? 'visible' : 'hidden'}
-          className="lg:col-span-3 space-y-6"
+          className="lg:col-span-3 space-y-5 sm:space-y-6"
         >
           {/* Bio card */}
           <div
-            className="rounded-2xl p-8 border"
+            className="rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 border"
             style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
           >
-            <p className="text-slate-300 text-sm leading-loose mb-5">
+            <p className="text-slate-300 text-xs sm:text-sm leading-loose mb-4 sm:mb-5">
               I'm <span className="text-white font-semibold">Sarth Narola</span> ({PROFILE.rollNo}), a final-year B.Tech CSE student at <span className="text-blue-400 font-medium">Nirma University</span> with a CGPA of <span className="text-blue-400 font-bold">9.10</span>. I am passionate about building production-ready web applications and AI-integrated systems.
             </p>
-            <p className="text-slate-400 text-sm leading-loose mb-5">
+            <p className="text-slate-400 text-xs sm:text-sm leading-loose mb-4 sm:mb-5">
               I've built multiple full-stack projects including an <span className="text-sky-400 font-medium">AI Financial Document Chatbot</span> using RAG + LangChain + FAISS, a <span className="text-sky-400 font-medium">Smart Expense Tracker</span> live in production, and an enterprise Fleet Management System. I follow clean architecture: Controllers → Services → Repositories.
             </p>
-            <p className="text-slate-400 text-sm leading-loose">
+            <p className="text-slate-400 text-xs sm:text-sm leading-loose">
               I was selected for <span className="text-amber-400 font-medium">Amazon ML Summer School 2025</span> and have participated in national hackathons including Smart India Hackathon. I actively practice competitive programming on LeetCode, Codeforces, and CodeChef.
             </p>
           </div>
 
           {/* Contact info row */}
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
             {[
               { icon: Mail, label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}` },
               { icon: MapPin, label: 'Location', value: PROFILE.location, href: null },
@@ -58,22 +58,23 @@ export default function AboutSection() {
               { icon: Linkedin, label: 'LinkedIn', value: 'sarth-narola', href: PROFILE.linkedin },
             ].map(item => (
               <div key={item.label}
-                className="flex items-center gap-3 p-3.5 rounded-xl border"
+                className="flex items-center gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-xl border"
                 style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(37,99,235,0.12)', border: '1px solid rgba(37,99,235,0.2)' }}>
-                  <item.icon size={14} className="text-blue-400" />
+                  <item.icon size={13} className="sm:w-3.5 sm:h-3.5 text-blue-400" />
                 </div>
-                <div className="min-w-0">
-                  <p className="text-xs text-slate-600 mb-0.5">{item.label}</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] sm:text-xs text-slate-600 mb-0.5">{item.label}</p>
                   {item.href ? (
                     <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined}
                       rel="noopener noreferrer"
-                      className="text-xs text-slate-300 hover:text-blue-400 transition-colors truncate block">
+                      className="text-[11px] sm:text-xs text-slate-300 hover:text-blue-400 transition-colors truncate block"
+                      aria-label={`${item.label}: ${item.value}`}>
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-xs text-slate-300 truncate">{item.value}</p>
+                    <p className="text-[11px] sm:text-xs text-slate-300 truncate">{item.value}</p>
                   )}
                 </div>
               </div>
@@ -84,7 +85,7 @@ export default function AboutSection() {
         {/* Right — Education + Links */}
         <motion.div
           variants={fadeUp} custom={3} initial="hidden" animate={inView ? 'visible' : 'hidden'}
-          className="lg:col-span-2 space-y-5"
+          className="lg:col-span-2 space-y-4 sm:space-y-5"
         >
           {/* Education */}
           <div

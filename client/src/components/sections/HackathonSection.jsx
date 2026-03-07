@@ -31,36 +31,38 @@ function SmartBiteCard({ project }) {
           </div>
         </div>
 
-        {/* Feature Table */}
-        <div className="mt-6 overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-white/10">
-                <th className="text-left py-2.5 px-3 text-xs font-bold text-slate-300 w-1/3">
-                  Feature
-                </th>
-                <th className="text-left py-2.5 px-3 text-xs font-bold text-slate-300">
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {project.features.map((feat, i) => (
-                <tr
-                  key={i}
-                  className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
-                >
-                  <td className="py-2.5 px-3 text-xs text-slate-300 font-medium whitespace-nowrap">
-                    <span className="mr-1.5">{feat.icon}</span>
-                    {feat.label}
-                  </td>
-                  <td className="py-2.5 px-3 text-xs text-slate-400">
-                    {feat.description}
-                  </td>
+        {/* Feature Table - Responsive */}
+        <div className="mt-6 overflow-x-auto -mx-2 sm:mx-0">
+          <div className="inline-block min-w-full align-middle">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="text-left py-2.5 px-2 sm:px-3 text-xs font-bold text-slate-300 w-1/3 min-w-[100px]">
+                    Feature
+                  </th>
+                  <th className="text-left py-2.5 px-2 sm:px-3 text-xs font-bold text-slate-300 min-w-[200px]">
+                    Description
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {project.features.map((feat, i) => (
+                  <tr
+                    key={i}
+                    className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
+                  >
+                    <td className="py-2.5 px-2 sm:px-3 text-xs text-slate-300 font-medium">
+                      <span className="mr-1.5">{feat.icon}</span>
+                      <span className="whitespace-normal sm:whitespace-nowrap">{feat.label}</span>
+                    </td>
+                    <td className="py-2.5 px-2 sm:px-3 text-xs text-slate-400">
+                      {feat.description}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* GitHub link */}
@@ -222,8 +224,8 @@ export default function HackathonSection() {
       {/* SmartBite — full width */}
       {smartBite && <SmartBiteCard project={smartBite} />}
 
-      {/* FleetFlow + ExeMan — 2 columns */}
-      <div className="grid md:grid-cols-2 gap-5 mt-5">
+      {/* FleetFlow + ExeMan — 1 col mobile, 2 col tablet+ */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mt-4 sm:mt-5">
         {others.map((project, i) => (
           <HackathonCard key={project.id} project={project} index={i} />
         ))}

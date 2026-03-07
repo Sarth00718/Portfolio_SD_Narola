@@ -110,8 +110,8 @@ export default function MLProjectsSection() {
         </motion.p>
       </div>
 
-      {/* 3 column grid */}
-      <div className="grid sm:grid-cols-3 gap-5">
+      {/* 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {ML_PROJECTS.map((project, i) => (
           <MLCard key={project.id} project={project} index={i} />
         ))}

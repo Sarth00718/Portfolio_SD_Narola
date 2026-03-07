@@ -57,8 +57,8 @@ export default function CompetitiveProgrammingSection() {
         </motion.p>
       </div>
 
-      {/* Platform Cards */}
-      <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      {/* Platform Cards: 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-4xl mx-auto">
         {CP_PROFILES.map((cp, i) => (
           <motion.a
             key={cp.platform}
