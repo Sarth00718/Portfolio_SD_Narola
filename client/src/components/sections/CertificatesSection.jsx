@@ -201,9 +201,9 @@ function CertCard({ cert, index, onViewPdf }) {
         {...(!isHovered && {
           style: {
             transformStyle: "preserve-3d",
-            background: "rgba(255,255,255,0.03)",
-            borderColor: "rgba(255,255,255,0.08)",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+            background: "var(--bg-card)",
+            borderColor: "var(--border-glass)",
+            boxShadow: "var(--shadow-sm, 0 4px 20px rgba(0,0,0,0.1))",
           },
         })}
       >
@@ -393,8 +393,8 @@ function CertStats({ inView }) {
           whileHover={{ y: -3, scale: 1.02 }}
           className="relative rounded-xl sm:rounded-2xl p-3 sm:p-4 border text-center overflow-hidden group"
           style={{
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.08)",
+            background: "var(--bg-card)",
+            border: "1px solid var(--border-glass)",
           }}
         >
           <div
@@ -416,7 +416,9 @@ function CertStats({ inView }) {
           >
             {inView ? stat.value : 0}
           </motion.span>
-          <span className="text-[10px] sm:text-xs text-slate-500">{stat.label}</span>
+          <span className="text-[10px] sm:text-xs text-slate-500">
+            {stat.label}
+          </span>
         </motion.div>
       ))}
     </div>
@@ -441,12 +443,10 @@ function CategoryFilters({ categories, active, onSelect }) {
           className="px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 border"
           style={{
             background:
-              active === cat
-                ? "rgba(37,99,235,0.15)"
-                : "rgba(255,255,255,0.03)",
+              active === cat ? "rgba(37,99,235,0.15)" : "var(--bg-card)",
             borderColor:
-              active === cat ? "rgba(37,99,235,0.4)" : "rgba(255,255,255,0.08)",
-            color: active === cat ? "#93c5fd" : "#94a3b8",
+              active === cat ? "rgba(37,99,235,0.4)" : "var(--border-glass)",
+            color: active === cat ? "#93c5fd" : "var(--text-secondary)",
             boxShadow:
               active === cat ? "0 0 15px rgba(37,99,235,0.15)" : "none",
           }}
