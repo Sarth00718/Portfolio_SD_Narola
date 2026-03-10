@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  Award,
-  ChevronDown,
-  ChevronUp,
-  Download,
-  FileText,
-} from "lucide-react";
+import { Award, ChevronDown } from "lucide-react";
 import { ACHIEVEMENTS } from "@data/achievements";
+import { useTheme } from "@context/ThemeContext";
 
 /* ─── Animated number counter ───────────────────────────────── */
 function AnimatedYear({ year, color }) {
@@ -54,8 +49,11 @@ function TimelineDot({ color, isActive }) {
 }
 
 /* ─── Achievement Card ──────────────────────────────────────── */
-function AchievementCard({ ach, index, isExpanded, onToggle }) {
+function AchievementCard({ ach, index, isExpanded, onToggle, isDark }) {
   const isEven = index % 2 === 0;
+
+  const defaultBg = isDark ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.8)";
+  const defaultBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
 
   return (
     <motion.div
@@ -70,21 +68,20 @@ function AchievementCard({ ach, index, isExpanded, onToggle }) {
       }}
       className="relative"
     >
-      {/* Card */}
       <motion.div
         whileHover={{ y: -4 }}
         onClick={onToggle}
         className="group relative rounded-2xl border overflow-hidden transition-all duration-500 cursor-pointer"
         style={{
           background: isExpanded
-            ? `linear-gradient(135deg, ${ach.accentColor}08, ${ach.accentColor}03)`
-            : "rgba(255,255,255,0.03)",
-          borderColor: isExpanded
-            ? `${ach.accentColor}30`
-            : "rgba(255,255,255,0.08)",
+            ? `linear-gradient(135deg, ${ach.accentColor}10, ${ach.accentColor}04)`
+            : defaultBg,
+          borderColor: isExpanded ? `${ach.accentColor}30` : defaultBorder,
           boxShadow: isExpanded
-            ? `0 0 40px ${ach.accentColor}15, 0 20px 40px rgba(0,0,0,0.2)`
-            : "0 4px 20px rgba(0,0,0,0.15)",
+            ? `0 0 40px ${ach.accentColor}15, 0 20px 40px rgba(0,0,0,0.15)`
+            : isDark
+              ? "0 4px 20px rgba(0,0,0,0.15)"
+              : "0 2px 12px rgba(0,0,0,0.06)",
         }}
       >
         {/* Accent top bar */}
@@ -117,12 +114,24 @@ function AchievementCard({ ach, index, isExpanded, onToggle }) {
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <h3 className="font-display font-bold text-white text-sm sm:text-base leading-snug">
+                  <h3
+                    style={{
+                      fontFamily: "'Outfit','Inter',sans-serif",
+                      fontWeight: 700,
+                      fontSize: "clamp(0.9rem,2.5vw,1.1rem)",
+                      color: isDark ? "#f1f5f9" : "#0f172a",
+                      lineHeight: 1.3,
+                    }}
+                  >
                     {ach.title}
                   </h3>
                   <p
-                    className="text-xs mt-1 font-medium"
-                    style={{ color: ach.accentColor }}
+                    style={{
+                      fontSize: "0.8rem",
+                      marginTop: "3px",
+                      fontWeight: 600,
+                      color: ach.accentColor,
+                    }}
                   >
                     {ach.subtitle}
                   </p>
@@ -142,8 +151,11 @@ function AchievementCard({ ach, index, isExpanded, onToggle }) {
               {/* Badge */}
               <div className="flex items-center gap-2 mt-2.5">
                 <span
-                  className="px-2.5 py-1 rounded-md text-xs font-semibold"
                   style={{
+                    padding: "3px 10px",
+                    borderRadius: "6px",
+                    fontSize: "0.75rem",
+                    fontWeight: 600,
                     background: `${ach.accentColor}15`,
                     border: `1px solid ${ach.accentColor}25`,
                     color: ach.accentColor,
@@ -152,11 +164,18 @@ function AchievementCard({ ach, index, isExpanded, onToggle }) {
                   {ach.badge}
                 </span>
                 <span
-                  className="px-2 py-0.5 rounded-md text-xs capitalize"
                   style={{
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    color: "#94a3b8",
+                    padding: "3px 8px",
+                    borderRadius: "6px",
+                    fontSize: "0.72rem",
+                    fontWeight: 500,
+                    background: isDark
+                      ? "rgba(255,255,255,0.05)"
+                      : "rgba(0,0,0,0.05)",
+                    border: isDark
+                      ? "1px solid rgba(255,255,255,0.08)"
+                      : "1px solid rgba(0,0,0,0.08)",
+                    color: isDark ? "#94a3b8" : "#64748b",
                   }}
                 >
                   {ach.type}
@@ -179,7 +198,13 @@ function AchievementCard({ ach, index, isExpanded, onToggle }) {
                   className="pt-4 mt-4 border-t"
                   style={{ borderColor: `${ach.accentColor}15` }}
                 >
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p
+                    style={{
+                      fontSize: "clamp(0.8rem,1.8vw,0.875rem)",
+                      color: isDark ? "#94a3b8" : "#475569",
+                      lineHeight: 1.7,
+                    }}
+                  >
                     {ach.description}
                   </p>
                 </div>
@@ -193,7 +218,7 @@ function AchievementCard({ ach, index, isExpanded, onToggle }) {
 }
 
 /* ─── Journey Stats Banner ──────────────────────────────────── */
-function JourneyBanner({ inView }) {
+function JourneyBanner({ inView, isDark }) {
   const highlights = [
     { icon: "🏅", label: "Amazon ML School", value: "Selected" },
     { icon: "🎓", label: "CGPA", value: "9.10" },
@@ -201,8 +226,11 @@ function JourneyBanner({ inView }) {
     { icon: "🇮🇳", label: "SIH Participant", value: "2024" },
   ];
 
+  const cardBg = isDark ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.8)";
+  const cardBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-12">
       {highlights.map((h, i) => (
         <motion.div
           key={h.label}
@@ -210,16 +238,17 @@ function JourneyBanner({ inView }) {
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.15 + i * 0.08, type: "spring", damping: 15 }}
           whileHover={{ y: -3, scale: 1.03 }}
-          className="rounded-2xl p-4 border text-center group"
-          style={{
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.08)",
-          }}
+          className="rounded-2xl p-4 border text-center"
+          style={{ background: cardBg, borderColor: cardBorder }}
         >
-          <span className="text-xl block mb-1">{h.icon}</span>
+          <span style={{ fontSize: "1.4rem" }} className="block mb-1">
+            {h.icon}
+          </span>
           <div
-            className="text-lg font-black font-display"
             style={{
+              fontFamily: "'Outfit','Inter',sans-serif",
+              fontWeight: 800,
+              fontSize: "clamp(1.1rem,3vw,1.4rem)",
               background: "linear-gradient(135deg, #60a5fa, #0ea5e9)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -228,7 +257,9 @@ function JourneyBanner({ inView }) {
           >
             {h.value}
           </div>
-          <span className="text-xs text-slate-500">{h.label}</span>
+          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
+            {h.label}
+          </span>
         </motion.div>
       ))}
     </div>
@@ -239,6 +270,7 @@ function JourneyBanner({ inView }) {
 export default function AchievementsSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [expandedId, setExpandedId] = useState(null);
+  const { isDark } = useTheme();
 
   const toggle = (id) => setExpandedId((prev) => (prev === id ? null : id));
 
@@ -278,7 +310,7 @@ export default function AchievementsSection() {
       </div>
 
       {/* Stats Banner */}
-      <JourneyBanner inView={inView} />
+      <JourneyBanner inView={inView} isDark={isDark} />
 
       {/* Timeline Cards */}
       <div className="max-w-3xl mx-auto space-y-4">
@@ -289,6 +321,7 @@ export default function AchievementsSection() {
             index={i}
             isExpanded={expandedId === ach.id}
             onToggle={() => toggle(ach.id)}
+            isDark={isDark}
           />
         ))}
       </div>

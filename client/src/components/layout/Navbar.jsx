@@ -54,19 +54,25 @@ export default function Navbar() {
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  const glassBg = scrolled
+  const navBg = scrolled
     ? isDark
-      ? "rgba(10,15,30,0.92)"
-      : "rgba(248,250,252,0.92)"
+      ? "rgba(10,15,30,0.95)"
+      : "rgba(248,250,252,0.95)"
     : "transparent";
+
+  const navBorder = scrolled
+    ? isDark
+      ? "1px solid rgba(255,255,255,0.07)"
+      : "1px solid rgba(0,0,0,0.07)"
+    : "1px solid transparent";
 
   return (
     <>
-      {/* Skip to main content - Accessibility */}
+      {/* Skip to main content — Accessibility */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold focus:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        style={{ background: 'linear-gradient(135deg,#1d4ed8,#2563eb)' }}
+        style={{ background: "linear-gradient(135deg,#1d4ed8,#2563eb)" }}
       >
         Skip to main content
       </a>
@@ -79,49 +85,70 @@ export default function Navbar() {
         style={
           scrolled
             ? {
-                background: glassBg,
-                backdropFilter: "blur(16px)",
-                borderBottom: `1px solid ${isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)"}`,
-                boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
+                background: navBg,
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                borderBottom: navBorder,
+                boxShadow: isDark
+                  ? "0 4px 24px rgba(0,0,0,0.3)"
+                  : "0 4px 24px rgba(0,0,0,0.06)",
               }
             : { background: "transparent" }
         }
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16 md:h-16">{/* Logo */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="flex items-center justify-between"
+            style={{ height: "64px" }}
+          >
+            {/* Logo */}
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center gap-1.5 sm:gap-2"
+              className="flex items-center gap-2.5"
               aria-label="Scroll to top"
             >
               <div
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-[10px] sm:text-xs font-black text-white flex-shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center font-black text-white flex-shrink-0"
                 style={{
                   background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
+                  fontSize: "0.8rem",
+                  letterSpacing: "0.05em",
                 }}
               >
                 SN
               </div>
               <div className="hidden xs:block text-left">
                 <div
-                  className="text-[11px] sm:text-sm font-bold font-display leading-tight"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{
+                    fontSize: "0.95rem",
+                    fontFamily: "'Outfit', 'Inter', sans-serif",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    lineHeight: 1.2,
+                  }}
                 >
                   Sarth Narola
                 </div>
                 <div
-                  className="text-[9px] sm:text-xs leading-tight"
-                  style={{ color: "var(--text-muted)" }}
+                  style={{
+                    fontSize: "0.7rem",
+                    color: "var(--text-muted)",
+                    lineHeight: 1.2,
+                  }}
                 >
-                  Full Stack · AI
+                  Full Stack · AI/ML
                 </div>
               </div>
             </motion.button>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-0.5" role="navigation" aria-label="Main navigation">
+            <nav
+              className="hidden lg:flex items-center gap-1"
+              role="navigation"
+              aria-label="Main navigation"
+            >
               {NAV_ITEMS.map((item) => {
                 const isActive = activeHash === item.href;
                 return (
@@ -129,21 +156,34 @@ export default function Navbar() {
                     key={item.href}
                     onClick={() => scrollTo(item.href)}
                     title={item.title}
-                    className="relative px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 hover:bg-white/5"
+                    className="relative rounded-lg transition-all duration-200"
                     style={{
-                      color: isActive ? "#93c5fd" : "var(--text-secondary)",
+                      padding: "6px 14px",
+                      fontSize: "0.875rem",
+                      fontWeight: 500,
+                      color: isActive ? "#60a5fa" : "var(--text-secondary)",
                       background: isActive
                         ? "rgba(37,99,235,0.1)"
                         : "transparent",
                     }}
                     aria-label={`Navigate to ${item.title || item.label}`}
                     aria-current={isActive ? "page" : undefined}
+                    onMouseEnter={(e) => {
+                      if (!isActive)
+                        e.currentTarget.style.background = isDark
+                          ? "rgba(255,255,255,0.05)"
+                          : "rgba(0,0,0,0.04)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive)
+                        e.currentTarget.style.background = "transparent";
+                    }}
                   >
                     {item.label}
                     {isActive && (
                       <motion.div
                         layoutId="nav-indicator"
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-0.5 rounded-full"
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
                         style={{
                           background: "linear-gradient(90deg,#1d4ed8,#2563eb)",
                         }}
@@ -155,16 +195,16 @@ export default function Navbar() {
             </nav>
 
             {/* Right actions */}
-            <div className="flex items-center gap-1 sm:gap-1.5">
-              {/* Social icons - hidden on mobile */}
-              <div className="hidden md:flex items-center gap-0.5">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              {/* Social icons — hidden on mobile */}
+              <div className="hidden md:flex items-center gap-1">
                 <a
                   href={PROFILE.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   title="GitHub Profile"
                   aria-label="GitHub Profile"
-                  className="w-8 h-8 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
+                  className="w-9 h-9 flex items-center justify-center rounded-lg transition-all"
                   style={{ color: "var(--text-muted)" }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = "var(--text-primary)")
@@ -173,7 +213,7 @@ export default function Navbar() {
                     (e.currentTarget.style.color = "var(--text-muted)")
                   }
                 >
-                  <Github size={15} />
+                  <Github size={16} />
                 </a>
                 <a
                   href={PROFILE.linkedin}
@@ -181,7 +221,7 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   title="LinkedIn Profile"
                   aria-label="LinkedIn Profile"
-                  className="w-8 h-8 flex items-center justify-center rounded-lg transition-all hover:bg-white/5"
+                  className="w-9 h-9 flex items-center justify-center rounded-lg transition-all"
                   style={{ color: "var(--text-muted)" }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = "#60a5fa")
@@ -190,7 +230,7 @@ export default function Navbar() {
                     (e.currentTarget.style.color = "var(--text-muted)")
                   }
                 >
-                  <Linkedin size={15} />
+                  <Linkedin size={16} />
                 </a>
               </div>
 
@@ -199,46 +239,48 @@ export default function Navbar() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
-                className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg border transition-all"
+                className="w-9 h-9 flex items-center justify-center rounded-lg border transition-all"
                 style={{
                   borderColor: "var(--border-glass)",
                   background: "var(--bg-card)",
+                  color: isDark ? "#fbbf24" : "#1d4ed8",
                 }}
                 title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+                aria-label={
+                  isDark ? "Switch to light mode" : "Switch to dark mode"
+                }
               >
-                {isDark ? (
-                  <Sun size={13} className="sm:w-3.5 sm:h-3.5 text-amber-400" />
-                ) : (
-                  <Moon size={13} className="sm:w-3.5 sm:h-3.5 text-blue-600" />
-                )}
+                {isDark ? <Sun size={15} /> : <Moon size={15} />}
               </motion.button>
 
-              {/* Resume - hidden on smallest screens */}
+              {/* Resume button */}
               <a
                 href="/resume.pdf"
                 download
-                className="hidden sm:inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs font-semibold text-white transition-all hover:shadow-lg"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-lg font-semibold text-white transition-all hover:shadow-lg hover:scale-105"
                 style={{
                   background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
+                  fontSize: "0.8rem",
+                  letterSpacing: "0.02em",
                 }}
                 aria-label="Download Resume"
               >
-                Resume
+                Resume ↓
               </a>
 
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg transition-all"
+                className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg transition-all"
                 style={{
                   color: "var(--text-secondary)",
                   background: "var(--bg-card)",
+                  border: "1px solid var(--border-glass)",
                 }}
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileOpen}
               >
-                {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+                {mobileOpen ? <X size={17} /> : <Menu size={17} />}
               </button>
             </div>
           </div>
@@ -253,28 +295,36 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-14 sm:top-16 left-0 right-0 z-40 lg:hidden max-h-[calc(100vh-3.5rem)] sm:max-h-[calc(100vh-4rem)] overflow-y-auto"
+            className="fixed top-16 left-0 right-0 z-40 lg:hidden overflow-y-auto"
             style={{
+              maxHeight: "calc(100vh - 4rem)",
               background: isDark
-                ? "rgba(10,15,30,0.97)"
-                : "rgba(248,250,252,0.97)",
-              backdropFilter: "blur(20px)",
-              borderBottom: `1px solid ${isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)"}`,
+                ? "rgba(10,15,30,0.98)"
+                : "rgba(248,250,252,0.98)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              borderBottom: isDark
+                ? "1px solid rgba(255,255,255,0.07)"
+                : "1px solid rgba(0,0,0,0.07)",
             }}
             role="navigation"
             aria-label="Mobile navigation"
           >
-            <div className="px-4 py-4 space-y-0.5">
+            <div className="px-4 py-5 space-y-1">
               {NAV_ITEMS.map((item) => {
                 const isActive = activeHash === item.href;
                 return (
                   <button
                     key={item.href}
                     onClick={() => scrollTo(item.href)}
-                    className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all"
+                    className="w-full text-left px-4 py-3.5 rounded-xl transition-all"
                     style={{
-                      color: isActive ? "#93c5fd" : "var(--text-secondary)",
-                      background: isActive ? "rgba(37,99,235,0.1)" : "transparent",
+                      fontSize: "0.95rem",
+                      fontWeight: 500,
+                      color: isActive ? "#60a5fa" : "var(--text-secondary)",
+                      background: isActive
+                        ? "rgba(37,99,235,0.1)"
+                        : "transparent",
                     }}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -282,35 +332,49 @@ export default function Navbar() {
                   </button>
                 );
               })}
-              {/* Mobile social */}
+
+              {/* Mobile social + resume */}
               <div
-                className="flex flex-wrap gap-3 pt-3 px-4 border-t mt-2"
+                className="flex flex-wrap gap-4 pt-4 px-4 mt-2 border-t"
                 style={{ borderColor: "var(--border-glass)" }}
               >
                 <a
                   href={PROFILE.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs hover:text-white transition-colors"
-                  style={{ color: "var(--text-muted)" }}
+                  className="flex items-center gap-2 transition-colors"
+                  style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}
                   aria-label="GitHub Profile"
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--text-primary)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--text-muted)")
+                  }
                 >
-                  <Github size={13} /> GitHub
+                  <Github size={15} /> GitHub
                 </a>
                 <a
                   href={PROFILE.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs hover:text-blue-400 transition-colors"
-                  style={{ color: "var(--text-muted)" }}
+                  className="flex items-center gap-2 transition-colors"
+                  style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}
                   aria-label="LinkedIn Profile"
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "#60a5fa")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--text-muted)")
+                  }
                 >
-                  <Linkedin size={13} /> LinkedIn
+                  <Linkedin size={15} /> LinkedIn
                 </a>
                 <a
                   href="/resume.pdf"
                   download
-                  className="flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                  className="flex items-center gap-1.5 transition-colors"
+                  style={{ fontSize: "0.875rem", color: "#60a5fa" }}
                   aria-label="Download Resume"
                 >
                   Resume ↓

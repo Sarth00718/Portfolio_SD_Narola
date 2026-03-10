@@ -1,53 +1,112 @@
-import { motion } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
-import { ArrowDown, Github, Linkedin, Mail, Download, ChevronRight } from 'lucide-react';
-import NeuralCanvas from '@components/common/NeuralCanvas';
-import { PROFILE } from '@data/achievements';
+import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
+import {
+  ArrowDown,
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  ChevronRight,
+} from "lucide-react";
+import NeuralCanvas from "@components/common/NeuralCanvas";
+import { PROFILE } from "@data/achievements";
+import { useTheme } from "@context/ThemeContext";
 
 const STATS = [
-  { value: '10+', label: 'Projects Built' },
-  { value: '9.10', label: 'CGPA' },
-  { value: '50+', label: 'APIs Designed' },
-  { value: '3', label: 'CP Platforms' },
+  { value: "10+", label: "Projects Built" },
+  { value: "9.10", label: "CGPA" },
+  { value: "50+", label: "APIs Designed" },
+  { value: "3", label: "CP Platforms" },
 ];
 
 const SOCIAL = [
-  { icon: Github, href: PROFILE.github, label: 'GitHub', hoverColor: '#e2e8f0' },
-  { icon: Linkedin, href: PROFILE.linkedin, label: 'LinkedIn', hoverColor: '#60a5fa' },
-  { icon: Mail, href: `mailto:${PROFILE.email}`, label: 'Email', hoverColor: '#93c5fd' },
+  {
+    icon: Github,
+    href: PROFILE.github,
+    label: "GitHub",
+    hoverColor: "#e2e8f0",
+  },
+  {
+    icon: Linkedin,
+    href: PROFILE.linkedin,
+    label: "LinkedIn",
+    hoverColor: "#60a5fa",
+  },
+  {
+    icon: Mail,
+    href: `mailto:${PROFILE.email}`,
+    label: "Email",
+    hoverColor: "#93c5fd",
+  },
 ];
 
 export default function HeroSection() {
+  const { isDark } = useTheme();
+
+  const heroBg = isDark
+    ? "linear-gradient(135deg,#0a0f1e 0%,#111827 60%,#0a0f1e 100%)"
+    : "linear-gradient(135deg,#f0f4ff 0%,#e8effe 60%,#f0f4ff 100%)";
+
+  const cardBg = isDark ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.75)";
+  const cardBorder = isDark
+    ? "1px solid rgba(255,255,255,0.08)"
+    : "1px solid rgba(37,99,235,0.12)";
+
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg,#0a0f1e 0%,#111827 60%,#0a0f1e 100%)' }}
+      style={{ background: heroBg }}
     >
       {/* Neural network background */}
       <NeuralCanvas />
 
       {/* Ambient glows */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%)', filter: 'blur(80px)' }} />
-      <div className="absolute bottom-1/3 left-1/5 w-80 h-80 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(14,165,233,0.06), transparent 70%)', filter: 'blur(60px)' }} />
+      <div
+        className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
+      <div
+        className="absolute bottom-1/3 left-1/5 w-80 h-80 rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(14,165,233,0.06), transparent 70%)",
+          filter: "blur(60px)",
+        }}
+      />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
-        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-center">
-
+      <div
+        className="relative z-10 w-full max-w-7xl mx-auto py-24 sm:py-28 md:py-32"
+        style={{
+          paddingLeft: "clamp(1rem, 4vw, 2rem)",
+          paddingRight: "clamp(1rem, 4vw, 2rem)",
+        }}
+      >
+        <div className="grid lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-14 items-start lg:items-center">
           {/* Left — Text */}
-          <div className="lg:col-span-3 space-y-4 sm:space-y-5 md:space-y-6">
+          <div className="lg:col-span-3 space-y-5 sm:space-y-6">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[9px] sm:text-xs font-semibold tracking-wider uppercase"
-                style={{ background: 'rgba(37,99,235,0.12)', border: '1px solid rgba(37,99,235,0.25)', color: '#93c5fd' }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-                <span className="whitespace-nowrap">2027 Graduate</span>
+              <span
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase"
+                style={{
+                  background: "rgba(37,99,235,0.12)",
+                  border: "1px solid rgba(37,99,235,0.25)",
+                  color: isDark ? "#93c5fd" : "#1d4ed8",
+                }}
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+                <span className="whitespace-nowrap">
+                  2027 Graduate · Open to Opportunities
+                </span>
               </span>
             </motion.div>
 
@@ -57,10 +116,28 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="font-display font-black leading-[1.1] break-words">
-                <span className="text-lg sm:text-2xl md:text-4xl lg:text-5xl text-white block mb-1 sm:mb-2">Hi, I'm</span>
-                <span className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl block"
-                  style={{ background: 'linear-gradient(135deg,#60a5fa 0%,#38bdf8 50%,#0ea5e9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              <h1 className="font-display font-black leading-[1.05] break-words">
+                <span
+                  className="block mb-2"
+                  style={{
+                    fontSize: "clamp(1.25rem, 3.5vw, 2rem)",
+                    color: isDark ? "rgba(241,245,249,0.8)" : "#334155",
+                    fontWeight: 600,
+                  }}
+                >
+                  Hi, I'm
+                </span>
+                <span
+                  className="block"
+                  style={{
+                    fontSize: "clamp(2.5rem, 7vw, 5rem)",
+                    background:
+                      "linear-gradient(135deg,#60a5fa 0%,#38bdf8 50%,#0ea5e9 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
                   Sarth Narola
                 </span>
               </h1>
@@ -71,17 +148,27 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="min-h-[20px] sm:min-h-[28px] flex items-center"
+              className="flex items-center"
+              style={{ minHeight: "36px" }}
             >
               <TypeAnimation
                 sequence={[
-                  '> MERN Stack Developer', 2000,
-                  '> Final Year Engineer', 2000,
+                  "❯ MERN Stack Developer",
+                  2200,
+                  "❯ AI Systems Engineer",
+                  2200,
+                  "❯ Final Year @ Nirma University",
+                  2200,
                 ]}
                 wrapper="span"
                 speed={55}
                 repeat={Infinity}
-                className="text-xs sm:text-base md:text-lg font-mono text-blue-300"
+                style={{
+                  fontSize: "clamp(0.95rem, 2.5vw, 1.25rem)",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: isDark ? "#93c5fd" : "#1d4ed8",
+                  fontWeight: 500,
+                }}
               />
             </motion.div>
 
@@ -90,9 +177,33 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-full lg:max-w-lg pr-2"
+              style={{
+                fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
+                color: isDark ? "#94a3b8" : "#475569",
+                lineHeight: 1.75,
+                maxWidth: "520px",
+              }}
             >
-              Building Scalable, Production-Ready Systems with Modern Web & AI. Specialized in <span className="text-slate-300">MERN applications</span> and <span className="text-slate-300">AI-integrated pipelines</span>.
+              Building Scalable, Production-Ready Systems with Modern Web &amp;
+              AI. Specialized in{" "}
+              <span
+                style={{
+                  color: isDark ? "#e2e8f0" : "#0f172a",
+                  fontWeight: 600,
+                }}
+              >
+                MERN applications
+              </span>{" "}
+              and{" "}
+              <span
+                style={{
+                  color: isDark ? "#e2e8f0" : "#0f172a",
+                  fontWeight: 600,
+                }}
+              >
+                AI-integrated pipelines
+              </span>
+              .
             </motion.p>
 
             {/* CTAs */}
@@ -100,17 +211,24 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="flex flex-wrap gap-2 sm:gap-3 items-start pt-1"
+              className="flex flex-wrap gap-3 items-start pt-1"
             >
               <motion.button
-                whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(37,99,235,0.5)' }}
+                whileHover={{
+                  scale: 1.04,
+                  boxShadow: "0 0 30px rgba(37,99,235,0.5)",
+                }}
                 whileTap={{ scale: 0.96 }}
-                onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary flex items-center gap-1.5 text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-3 shadow-lg"
+                onClick={() =>
+                  document
+                    .querySelector("#projects")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="btn-primary flex items-center gap-2"
                 aria-label="View Projects Section"
               >
                 View Projects
-                <ChevronRight size={14} className="sm:w-4 sm:h-4" />
+                <ChevronRight size={16} />
               </motion.button>
 
               <motion.a
@@ -118,21 +236,25 @@ export default function HeroSection() {
                 download
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                className="btn-secondary flex items-center gap-1.5 text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-3"
+                className="btn-secondary flex items-center gap-2"
                 aria-label="Download Resume PDF"
               >
-                <Download size={13} className="sm:w-3.5 sm:h-3.5" />
+                <Download size={15} />
                 Resume
               </motion.a>
 
               <motion.button
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-outline flex items-center gap-1.5 text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-3"
+                onClick={() =>
+                  document
+                    .querySelector("#contact")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="btn-outline flex items-center gap-2"
                 aria-label="Navigate to Contact Section"
               >
-                <Mail size={13} className="sm:w-3.5 sm:h-3.5" />
+                <Mail size={15} />
                 Contact
               </motion.button>
             </motion.div>
@@ -142,24 +264,62 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 pt-1"
+              className="flex flex-col sm:flex-row sm:items-center gap-3 pt-1"
             >
-              <span className="text-[9px] sm:text-xs text-slate-600 uppercase tracking-widest">Find me on</span>
-              <div className="flex gap-2">
-                {SOCIAL.map(({ icon: Icon, href, label, hoverColor }) => (
-                  <motion.a
-                    key={label}
-                    href={href}
-                    target={href.startsWith('http') ? '_blank' : undefined}
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    whileHover={{ scale: 1.15, y: -2 }}
-                    className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl text-slate-400 hover:text-white transition-all border"
-                    style={{ border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.04)' }}
-                  >
-                    <Icon size={15} className="sm:w-4 sm:h-4" />
-                  </motion.a>
-                ))}
+              <span
+                style={{
+                  fontSize: "0.75rem",
+                  color: isDark ? "#475569" : "#94a3b8",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  fontWeight: 600,
+                }}
+              >
+                Find me on
+              </span>
+              <div className="flex gap-2.5">
+                {SOCIAL.map((social) => {
+                  const SocialIcon = social.icon;
+                  return (
+                    <motion.a
+                      key={social.label}
+                      href={social.href}
+                      target={
+                        social.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      whileHover={{ scale: 1.15, y: -2 }}
+                      className="w-10 h-10 flex items-center justify-center rounded-xl transition-all"
+                      style={{
+                        border: isDark
+                          ? "1px solid rgba(255,255,255,0.08)"
+                          : "1px solid rgba(37,99,235,0.15)",
+                        background: isDark
+                          ? "rgba(255,255,255,0.04)"
+                          : "rgba(255,255,255,0.7)",
+                        color: isDark ? "#94a3b8" : "#475569",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color =
+                          social.label === "LinkedIn"
+                            ? "#60a5fa"
+                            : social.label === "GitHub"
+                              ? isDark
+                                ? "#fff"
+                                : "#0f172a"
+                              : "#93c5fd";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = isDark
+                          ? "#94a3b8"
+                          : "#475569";
+                      }}
+                    >
+                      <SocialIcon size={17} />
+                    </motion.a>
+                  );
+                })}
               </div>
             </motion.div>
           </div>
@@ -169,10 +329,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="lg:col-span-2 space-y-3 sm:space-y-4 mt-8 lg:mt-0 w-full"
+            className="lg:col-span-2 space-y-3 sm:space-y-4 mt-6 lg:mt-0 w-full"
           >
             {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-2 sm:gap-3">
+            <div className="grid grid-cols-2 gap-3">
               {STATS.map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -180,14 +340,31 @@ export default function HeroSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + i * 0.08 }}
                   whileHover={{ y: -4, scale: 1.03 }}
-                  className="rounded-lg sm:rounded-xl p-3 sm:p-4 text-center border transition-all"
-                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                  className="rounded-xl p-4 text-center border transition-all"
+                  style={{ background: cardBg, border: cardBorder }}
                 >
-                  <div className="font-display font-black text-lg sm:text-xl md:text-2xl text-white mb-0.5"
-                    style={{ background: 'linear-gradient(135deg,#60a5fa,#0ea5e9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  <div
+                    className="font-display font-black mb-1"
+                    style={{
+                      fontSize: "clamp(1.4rem, 4vw, 2rem)",
+                      background: "linear-gradient(135deg,#60a5fa,#0ea5e9)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
                     {stat.value}
                   </div>
-                  <div className="text-[8px] sm:text-[10px] md:text-xs text-slate-500 leading-tight">{stat.label}</div>
+                  <div
+                    style={{
+                      fontSize: "clamp(0.7rem, 1.5vw, 0.8rem)",
+                      color: isDark ? "#64748b" : "#64748b",
+                      lineHeight: 1.3,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {stat.label}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -198,29 +375,88 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
               whileHover={{ y: -3 }}
-              className="rounded-lg sm:rounded-xl p-3 sm:p-4 border transition-all"
-              style={{ background: 'rgba(37,99,235,0.07)', border: '1px solid rgba(37,99,235,0.18)' }}
+              className="rounded-xl p-4 border transition-all"
+              style={{
+                background: isDark
+                  ? "rgba(37,99,235,0.07)"
+                  : "rgba(37,99,235,0.05)",
+                border: isDark
+                  ? "1px solid rgba(37,99,235,0.18)"
+                  : "1px solid rgba(37,99,235,0.2)",
+              }}
             >
-              <div className="flex items-start gap-2 sm:gap-3 mb-2 sm:mb-2.5">
-                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
-                  style={{ background: 'linear-gradient(135deg,#1d4ed8,#2563eb)' }}>
+              <div className="flex items-start gap-3 mb-3">
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
+                    fontSize: "1rem",
+                  }}
+                >
                   🎓
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] sm:text-xs md:text-sm font-bold text-white leading-tight">Nirma University</div>
-                  <div className="text-[8px] sm:text-[10px] md:text-xs text-slate-500 mt-0.5">B.Tech CSE · 2022–2027</div>
+                  <div
+                    style={{
+                      fontSize: "clamp(0.875rem, 2vw, 1rem)",
+                      fontWeight: 700,
+                      color: isDark ? "#f1f5f9" : "#0f172a",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    Nirma University
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.8rem",
+                      color: isDark ? "#64748b" : "#64748b",
+                      marginTop: "2px",
+                    }}
+                  >
+                    B.Tech CSE · 2022–2027
+                  </div>
                 </div>
-                <div className="flex-shrink-0">
-                  <span className="text-[8px] sm:text-[10px] md:text-xs font-bold text-blue-400 px-1.5 sm:px-2 py-0.5 rounded-md whitespace-nowrap"
-                    style={{ background: 'rgba(37,99,235,0.15)', border: '1px solid rgba(37,99,235,0.25)' }}>
-                    9.10
-                  </span>
-                </div>
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    fontWeight: 700,
+                    color: "#60a5fa",
+                    padding: "3px 10px",
+                    borderRadius: "6px",
+                    background: "rgba(37,99,235,0.15)",
+                    border: "1px solid rgba(37,99,235,0.25)",
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                  }}
+                >
+                  9.10
+                </span>
               </div>
-              <div className="flex flex-wrap gap-1 sm:gap-1.5">
-                {['React', 'Node.js', 'MongoDB', 'LangChain', 'FastAPI', 'FAISS'].map(t => (
-                  <span key={t} className="px-1.5 sm:px-2 py-0.5 rounded-md text-[8px] sm:text-[10px] md:text-xs text-slate-400 border"
-                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  "React",
+                  "Node.js",
+                  "MongoDB",
+                  "LangChain",
+                  "FastAPI",
+                  "FAISS",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    style={{
+                      padding: "3px 10px",
+                      borderRadius: "6px",
+                      fontSize: "0.75rem",
+                      color: isDark ? "#94a3b8" : "#475569",
+                      background: isDark
+                        ? "rgba(255,255,255,0.04)"
+                        : "rgba(0,0,0,0.04)",
+                      border: isDark
+                        ? "1px solid rgba(255,255,255,0.08)"
+                        : "1px solid rgba(0,0,0,0.08)",
+                      fontWeight: 500,
+                    }}
+                  >
                     {t}
                   </span>
                 ))}
@@ -233,13 +469,38 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85 }}
               whileHover={{ y: -3 }}
-              className="rounded-lg sm:rounded-xl p-3 sm:p-3.5 border flex items-start gap-2 sm:gap-2.5 transition-all"
-              style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.18)' }}
+              className="rounded-xl p-4 border flex items-start gap-3 transition-all"
+              style={{
+                background: isDark
+                  ? "rgba(245,158,11,0.06)"
+                  : "rgba(245,158,11,0.05)",
+                border: isDark
+                  ? "1px solid rgba(245,158,11,0.18)"
+                  : "1px solid rgba(245,158,11,0.25)",
+              }}
             >
-              <span className="text-lg sm:text-xl flex-shrink-0">🏅</span>
+              <span style={{ fontSize: "1.4rem", flexShrink: 0 }}>🏅</span>
               <div className="flex-1 min-w-0">
-                <div className="text-[10px] sm:text-xs md:text-sm font-bold text-amber-400 leading-tight mb-0.5 sm:mb-1">Amazon ML Summer School 2025</div>
-                <div className="text-[8px] sm:text-[10px] md:text-xs text-slate-500 leading-relaxed">Selected from national pool of top engineering students</div>
+                <div
+                  style={{
+                    fontSize: "clamp(0.8rem, 2vw, 0.95rem)",
+                    fontWeight: 700,
+                    color: "#f59e0b",
+                    lineHeight: 1.3,
+                    marginBottom: "4px",
+                  }}
+                >
+                  Amazon ML Summer School 2025
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.8rem",
+                    color: isDark ? "#64748b" : "#64748b",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  Selected from national pool of top engineering students
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -251,10 +512,26 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-fit flex flex-col items-center gap-2 cursor-pointer"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+        onClick={() =>
+          document
+            .querySelector("#about")
+            ?.scrollIntoView({ behavior: "smooth" })
+        }
       >
-        <span className="text-xs text-slate-600 uppercase tracking-widest">Scroll</span>
-        <ArrowDown size={14} className="text-slate-600" />
+        <span
+          style={{
+            fontSize: "0.7rem",
+            color: isDark ? "#475569" : "#94a3b8",
+            textTransform: "uppercase",
+            letterSpacing: "0.15em",
+          }}
+        >
+          Scroll
+        </span>
+        <ArrowDown
+          size={15}
+          style={{ color: isDark ? "#475569" : "#94a3b8" }}
+        />
       </motion.div>
     </section>
   );
