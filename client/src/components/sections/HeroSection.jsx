@@ -13,10 +13,10 @@ import { PROFILE } from "@data/achievements";
 import { useTheme } from "@context/ThemeContext";
 
 const STATS = [
-  { value: "10+", label: "Projects Built" },
-  { value: "9.10", label: "CGPA" },
-  { value: "50+", label: "APIs Designed" },
-  { value: "3", label: "CP Platforms" },
+  { value: "15+", label: "Projects Built", icon: "🚀" },
+  { value: "9.10", label: "CGPA", icon: "🎓" },
+  { value: "3", label: "Hackathons", icon: "🏆" },
+  { value: "500+", label: "GitHub Commits", icon: "💻" },
 ];
 
 const SOCIAL = [
