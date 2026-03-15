@@ -55,16 +55,16 @@ export const CORE_PROJECTS = [
       { label: "React", color: "#61DAFB", bg: "rgba(97,218,251,0.12)" },
       { label: "Firebase", color: "#FFCA28", bg: "rgba(255,202,40,0.12)" },
       { label: "Razorpay", color: "#3395FF", bg: "rgba(51,149,255,0.12)" },
-      { label: "Render", color: "#46E3B7", bg: "rgba(70,227,183,0.12)" },
+      { label: "Vercel", color: "#000000", bg: "rgba(0,0,0,0.12)" },
     ],
     features: [
       { icon: "💳", text: "Razorpay payment integration" },
       { icon: "🔐", text: "Firebase authentication" },
       { icon: "📋", text: "Admin dashboard for management" },
-      { icon: "🚀", text: "Deployed on Render" },
+      { icon: "🚀", text: "Deployed on Vercel" },
     ],
     githubUrl: "https://github.com/Sarth00718",
-    liveUrl: "https://vastra-cloth-shop-frontend.onrender.com",
+    liveUrl: "https://vastra-cloth-shop.vercel.app/",
   },
   {
     id: "chat-app",
@@ -84,8 +84,7 @@ export const CORE_PROJECTS = [
       { icon: "☁️", text: "Cloud-hosted on MongoDB Atlas" },
     ],
     githubUrl: "https://github.com/Sarth00718",
-    liveUrl:
-      "https://vercel.com/sarths-projects-b8db4d8c/real-time-chat-application",
+    liveUrl: "https://real-time-chat-application-two-smoky.vercel.app/",
   },
 ];
 
@@ -134,6 +133,20 @@ export const HACKATHON_PROJECTS = [
         label: "Dark/Light Mode",
         description: "Responsive UI with PWA-ready architecture",
       },
+    ],
+    githubUrl: "https://github.com/Sarth00718",
+  },
+  {
+    id: "hackamind",
+    emoji: "🧠",
+    title: "Hackamind Hackathon",
+    subtitle: "Nirma University Participant",
+    tagline: "Innovative problem-solving competition",
+    features: [
+      { icon: "🎯", text: "Participated in Nirma University hackathon" },
+      { icon: "💡", text: "Rapid prototyping & innovation" },
+      { icon: "🤝", text: "Team collaboration & problem-solving" },
+      { icon: "⚡", text: "Time-constrained development challenge" },
     ],
     githubUrl: "https://github.com/Sarth00718",
   },

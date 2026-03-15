@@ -66,6 +66,21 @@ export const ACHIEVEMENTS = [
     type: "hackathon",
   },
   {
+    id: "hackamind",
+    title: "Hackamind Hackathon — Nirma University",
+    subtitle: "University Level Participation",
+    description:
+      "Participated in Hackamind Hackathon organized by Nirma University — a competitive innovation challenge focused on rapid prototyping, creative problem-solving, and team collaboration under time constraints.",
+    icon: "🧠",
+    color: "from-purple-600 to-pink-500",
+    gradient: "from-purple-600/10 to-pink-500/10",
+    borderColor: "border-purple-600/30",
+    accentColor: "#9333ea",
+    badge: "Hackamind",
+    year: 2024,
+    type: "hackathon",
+  },
+  {
     id: "sih",
     title: "Smart India Hackathon 2024",
     subtitle: "National Level Participation · Government of India",
