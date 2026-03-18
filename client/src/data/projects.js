@@ -79,10 +79,11 @@ export const CORE_PROJECTS = [
       { icon: "🛒", text: "Advanced cart management with wishlist functionality" },
       { icon: "📋", text: "Comprehensive admin dashboard for inventory management" },
       { icon: "📦", text: "Order tracking and management system" },
-      { icon: "🚀", text: "Production-ready deployment on Render" },
+      { icon: "🚀", text: "Production-ready deployment on Vercel" },
     ],
     githubUrl: "https://github.com/Sarth00718/Vastra",
-    liveUrl: "https://vastra-cloth-shop-frontend.onrender.com",
+    liveUrl: "https://vastra-cloth-shop-oirs.vercel.app/login",
+    adminUrl: "https://vastra-cloth-shop.vercel.app/",
   },
   {
     id: "chat-app",
@@ -105,7 +106,7 @@ export const CORE_PROJECTS = [
       { icon: "☁️", text: "Cloud-hosted on MongoDB Atlas for scalability" },
     ],
     githubUrl: "https://github.com/Sarth00718/Real-Time-Chat-App",
-    liveUrl: "https://vercel.com/sarths-projects-b8db4d8c/real-time-chat-application",
+    liveUrl: "https://real-time-chat-application-two-smoky.vercel.app/",
   },
 ];
 
