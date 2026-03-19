@@ -290,7 +290,7 @@ export const DSA_PROJECTS = [
     techStack: "Python · FastAPI · NetworkX · React · D3.js · Recharts",
     description: "Advanced graph-theory based tournament scheduler implementing Welsh-Powell graph coloring algorithm for conflict-free match scheduling. Features Dijkstra's algorithm for travel optimization and interactive D3.js visualizations for conflict graphs, adjacency matrices, and tournament trees.",
     githubUrl: "https://github.com/Sarth00718/Tournament-Graph-Scheduling-System",
-    liveUrl: null,
+    liveUrl: "https://tournament-graph-scheduling-system.vercel.app/",
     highlights: [
       "Welsh-Powell graph coloring for scheduling",
       "Dijkstra's shortest path for travel optimization",
