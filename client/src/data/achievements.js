@@ -7,7 +7,8 @@ export const PROFILE = {
   name: "Sarth Narola",
   title: "Full Stack Developer & AI Engineer",
   tagline: "Building Scalable AI-Powered Web Applications",
-  email: "sarth.narola@nirmauni.ac.in", // Update with your real email
+  email: "sarthnarola007@gmail.com",
+  nirmaEmail: "23bce194@nirmauni.ac.in",
   rollNo: "23BCE194",
   location: "Surat, Gujarat, India",
   github: "https://github.com/Sarth00718",
@@ -120,7 +121,7 @@ export const ACHIEVEMENTS = [
     type: "Participation",
     description: "Competed in 48-hour national-level hackathon, building full-stack AI-integrated solutions under time constraints",
     icon: "⚡",
-    color: "#8b5cf6"
+    color: "#3b82f6"
   }
 ];
 

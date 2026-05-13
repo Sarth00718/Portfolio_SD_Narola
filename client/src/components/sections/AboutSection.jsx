@@ -107,11 +107,11 @@ export default function AboutSection() {
               }}
             >
               I've built multiple full-stack projects including an{" "}
-              <span style={{ color: "#38bdf8", fontWeight: 600 }}>
+              <span style={{ color: "#22d3ee", fontWeight: 600 }}>
                 AI Financial Document Chatbot
               </span>{" "}
               using RAG + LangChain + FAISS, a{" "}
-              <span style={{ color: "#38bdf8", fontWeight: 600 }}>
+              <span style={{ color: "#22d3ee", fontWeight: 600 }}>
                 Smart Expense Tracker
               </span>{" "}
               live in production, and an enterprise Fleet Management System.
@@ -138,9 +138,15 @@ export default function AboutSection() {
             {[
               {
                 icon: Mail,
-                label: "Email",
+                label: "Personal Email",
                 value: PROFILE.email,
                 href: `mailto:${PROFILE.email}`,
+              },
+              {
+                icon: Mail,
+                label: "Nirma Email",
+                value: PROFILE.nirmaEmail,
+                href: `mailto:${PROFILE.nirmaEmail}`,
               },
               {
                 icon: MapPin,
@@ -174,8 +180,8 @@ export default function AboutSection() {
                 <div
                   className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{
-                    background: "rgba(37,99,235,0.12)",
-                    border: "1px solid rgba(37,99,235,0.2)",
+                    background: "rgba(99,102,241,0.12)",
+                    border: "1px solid rgba(99,102,241,0.2)",
                   }}
                 >
                   <item.icon size={15} className="text-blue-400" />
@@ -239,18 +245,18 @@ export default function AboutSection() {
             className="rounded-2xl p-5 sm:p-6 border"
             style={{
               background: isDark
-                ? "rgba(37,99,235,0.05)"
-                : "rgba(37,99,235,0.04)",
+                ? "rgba(99,102,241,0.05)"
+                : "rgba(99,102,241,0.04)",
               border: isDark
-                ? "1px solid rgba(37,99,235,0.15)"
-                : "1px solid rgba(37,99,235,0.2)",
+                ? "1px solid rgba(99,102,241,0.15)"
+                : "1px solid rgba(99,102,241,0.2)",
             }}
           >
             <div className="flex items-center gap-3 mb-5">
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center"
                 style={{
-                  background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
+                  background: "linear-gradient(135deg,#2563eb,#2563eb)",
                 }}
               >
                 <GraduationCap size={20} className="text-white" />
@@ -332,7 +338,7 @@ export default function AboutSection() {
                   transition={{ duration: 1.4, delay: 0.7, ease: "easeOut" }}
                   className="h-full rounded-full"
                   style={{
-                    background: "linear-gradient(90deg,#1d4ed8,#2563eb)",
+                    background: "linear-gradient(90deg,#2563eb,#2563eb)",
                   }}
                 />
               </div>
@@ -382,9 +388,16 @@ export default function AboutSection() {
                 {
                   href: `mailto:${PROFILE.email}`,
                   icon: Mail,
-                  label: "Email",
+                  label: "Gmail",
                   sub: PROFILE.email,
-                  borderH: "rgba(37,99,235,0.4)",
+                  borderH: "rgba(99,102,241,0.4)",
+                },
+                {
+                  href: `mailto:${PROFILE.nirmaEmail}`,
+                  icon: Mail,
+                  label: "Nirma Email",
+                  sub: PROFILE.nirmaEmail,
+                  borderH: "rgba(99,102,241,0.4)",
                 },
               ].map((link) => {
                 const LinkIcon = link.icon;

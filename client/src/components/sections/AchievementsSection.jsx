@@ -249,7 +249,7 @@ function JourneyBanner({ inView, isDark }) {
               fontFamily: "'Outfit','Inter',sans-serif",
               fontWeight: 800,
               fontSize: "clamp(1.1rem,3vw,1.4rem)",
-              background: "linear-gradient(135deg, #60a5fa, #0ea5e9)",
+              background: "linear-gradient(135deg, #60a5fa, #22d3ee)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",

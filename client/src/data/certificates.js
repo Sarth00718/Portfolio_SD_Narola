@@ -56,7 +56,7 @@ export const CERTIFICATES = [
     description:
       "Participated in the Mind Sprint Hackathon (IronXman track) hosted on Unstop — a national-level competitive 48-hour hackathon requiring rapid full-stack prototyping, AI integration, and innovative problem-solving under intense time constraints.",
     skills: ["Full Stack", "AI/ML", "Rapid Prototyping", "Innovation"],
-    color: "#8b5cf6",
+    color: "#3b82f6",
     bg: "rgba(139,92,246,0.07)",
     border: "rgba(139,92,246,0.18)",
     icon: "⚡",

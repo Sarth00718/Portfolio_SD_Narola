@@ -36,14 +36,21 @@ const SOCIAL_LINKS = [
     label: "LinkedIn",
     value: "sarth-narola-223002323",
     href: PROFILE.linkedin,
-    hoverStyle: { borderColor: "rgba(59,130,246,0.4)", color: "#60a5fa" },
+    hoverStyle: { borderColor: "rgba(99,102,241,0.4)", color: "#60a5fa" },
   },
   {
     icon: Mail,
-    label: "Email",
+    label: "Gmail",
     value: PROFILE.email,
     href: `mailto:${PROFILE.email}`,
-    hoverStyle: { borderColor: "rgba(37,99,235,0.4)", color: "#93c5fd" },
+    hoverStyle: { borderColor: "rgba(99,102,241,0.4)", color: "#93c5fd" },
+  },
+  {
+    icon: Mail,
+    label: "Nirma Email",
+    value: PROFILE.nirmaEmail,
+    href: `mailto:${PROFILE.nirmaEmail}`,
+    hoverStyle: { borderColor: "rgba(99,102,241,0.4)", color: "#93c5fd" },
   },
   {
     icon: MapPin,
@@ -260,8 +267,9 @@ export default function ContactSection() {
                         e.currentTarget.style.color = item.hoverStyle.color;
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor =
-                        "rgba(255,255,255,0.07)";
+                      e.currentTarget.style.borderColor = isDark
+                        ? "rgba(255,255,255,0.07)"
+                        : "rgba(0,0,0,0.08)";
                       e.currentTarget.style.color = "";
                     }}
                   >

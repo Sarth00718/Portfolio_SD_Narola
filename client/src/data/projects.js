@@ -106,7 +106,7 @@ export const CORE_PROJECTS = [
       { icon: "☁️", text: "Cloud-hosted on MongoDB Atlas for scalability" },
     ],
     githubUrl: "https://github.com/Sarth00718/Real-Time-Chat-App",
-    liveUrl: "https://real-time-chat-application-two-smoky.vercel.app/",
+    liveUrl: "https://real-time-chat-application-eosin.vercel.app",
   },
 ];
 

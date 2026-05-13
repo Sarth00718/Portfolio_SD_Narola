@@ -35,7 +35,7 @@ function FloatingOrbs() {
             top: `${10 + (i % 3) * 30}%`,
             background: `radial-gradient(circle, ${
               [
-                "rgba(37,99,235,0.06)",
+                "rgba(99,102,241,0.06)",
                 "rgba(139,92,246,0.05)",
                 "rgba(16,185,129,0.05)",
                 "rgba(245,158,11,0.05)",
@@ -401,14 +401,14 @@ function CertStats({ inView }) {
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle at 50% 0%, rgba(37,99,235,0.08), transparent 70%)",
+                "radial-gradient(circle at 50% 0%, rgba(99,102,241,0.08), transparent 70%)",
             }}
           />
           <span className="text-lg sm:text-xl mb-1 block">{stat.icon}</span>
           <motion.span
             className="text-xl sm:text-2xl font-black font-display block"
             style={{
-              background: "linear-gradient(135deg, #60a5fa, #0ea5e9)",
+              background: "linear-gradient(135deg, #60a5fa, #22d3ee)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -443,12 +443,12 @@ function CategoryFilters({ categories, active, onSelect }) {
           className="px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 border"
           style={{
             background:
-              active === cat ? "rgba(37,99,235,0.15)" : "var(--bg-card)",
+              active === cat ? "rgba(99,102,241,0.15)" : "var(--bg-card)",
             borderColor:
-              active === cat ? "rgba(37,99,235,0.4)" : "var(--border-glass)",
+              active === cat ? "rgba(99,102,241,0.4)" : "var(--border-glass)",
             color: active === cat ? "#93c5fd" : "var(--text-secondary)",
             boxShadow:
-              active === cat ? "0 0 15px rgba(37,99,235,0.15)" : "none",
+              active === cat ? "0 0 15px rgba(99,102,241,0.15)" : "none",
           }}
         >
           {cat}

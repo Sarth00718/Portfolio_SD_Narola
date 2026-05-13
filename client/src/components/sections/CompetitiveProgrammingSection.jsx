@@ -219,11 +219,11 @@ export default function CompetitiveProgrammingSection() {
           className="rounded-2xl p-6 border text-center"
           style={{
             background: isDark
-              ? "rgba(37,99,235,0.05)"
-              : "rgba(37,99,235,0.04)",
+              ? "rgba(99,102,241,0.05)"
+              : "rgba(99,102,241,0.04)",
             border: isDark
-              ? "1px solid rgba(37,99,235,0.15)"
-              : "1px solid rgba(37,99,235,0.15)",
+              ? "1px solid rgba(99,102,241,0.15)"
+              : "1px solid rgba(99,102,241,0.15)",
           }}
         >
           <p

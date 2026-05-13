@@ -72,7 +72,7 @@ export const SKILL_CATEGORIES = [
     id: 'ai_ml',
     label: 'AI / ML',
     icon: '🤖',
-    color: '#0ea5e9',
+    color: '#22d3ee',
     bg: 'rgba(14,165,233,0.1)',
     border: 'rgba(14,165,233,0.25)',
     skills: [
