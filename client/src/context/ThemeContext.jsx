@@ -4,11 +4,9 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    // Check localStorage first, then system preference
+    // Always default to dark; respect user's explicit toggle only
     const stored = localStorage.getItem("portfolio-theme");
-    if (stored === "light" || stored === "dark") return stored;
-    // Default to dark as per portfolio design
-    return "dark";
+    return stored === "light" ? "light" : "dark";
   });
 
   useEffect(() => {
