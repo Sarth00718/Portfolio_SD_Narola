@@ -224,6 +224,7 @@ export const HACKATHON_PROJECTS = [
       { icon: "📧", text: "Email integration for approval notifications and monthly summaries" },
     ],
     githubUrl: "https://github.com/Sarth00718/ExesMan",
+    liveUrl: "https://expense-management-gamma.vercel.app/",
   },
 ];
 
