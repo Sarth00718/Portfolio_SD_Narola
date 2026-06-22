@@ -1,6 +1,5 @@
 // ================================================================
-//  CERTIFICATES — Static data (no backend dependency for display)
-//  Schema mirrors MongoDB Certificate model
+//  CERTIFICATES — Static data
 // ================================================================
 
 export const CERTIFICATES = [
@@ -13,7 +12,7 @@ export const CERTIFICATES = [
     credentialId: null,
     credentialUrl: null,
     description:
-      "Selected for Amazon's highly competitive Machine Learning Summer School 2025. Covered supervised learning, deep learning, NLP, probabilistic graphical models, sequential models, and recommendation systems — taught by Amazon Scientists.",
+      "Selected for Amazon's ML Summer School 2025. Covered supervised learning, deep learning, NLP, probabilistic graphical models, sequential models, and recommendation systems — taught by Amazon Scientists.",
     skills: [
       "Machine Learning",
       "Deep Learning",
@@ -36,8 +35,8 @@ export const CERTIFICATES = [
     credentialUrl: null,
     pdfUrl: null,
     description:
-      "Participated in Nirma University hackathon focused on innovative problem-solving. Engaged in rapid prototyping, team collaboration, and time-constrained development challenges to create impactful solutions.",
-    skills: ["Rapid Prototyping", "Innovation", "Team Collaboration", "Problem-Solving"],
+      "Took part in Nirma University's Hackamind hackathon — built a working prototype under time pressure, collaborated with the team, and tackled a real problem from scratch.",
+    skills: ["Rapid Prototyping", "Team Collaboration", "Problem-Solving"],
     color: "#ec4899",
     bg: "rgba(236,72,153,0.07)",
     border: "rgba(236,72,153,0.18)",
@@ -54,8 +53,8 @@ export const CERTIFICATES = [
     credentialUrl: null,
     pdfUrl: "/MIND.pdf",
     description:
-      "Participated in the Mind Sprint Hackathon (IronXman track) hosted on Unstop — a national-level competitive 48-hour hackathon requiring rapid full-stack prototyping, AI integration, and innovative problem-solving under intense time constraints.",
-    skills: ["Full Stack", "AI/ML", "Rapid Prototyping", "Innovation"],
+      "Competed in the Mind Sprint 48-hour hackathon (IronXman track) on Unstop. Built and shipped a full-stack AI project with the team within the deadline.",
+    skills: ["Full Stack", "AI/ML", "Rapid Prototyping"],
     color: "#3b82f6",
     bg: "rgba(139,92,246,0.07)",
     border: "rgba(139,92,246,0.18)",
@@ -72,8 +71,8 @@ export const CERTIFICATES = [
     credentialUrl: null,
     pdfUrl: "/SIH2025.pdf",
     description:
-      "Participated in Smart India Hackathon — India's largest open innovation platform organized by the Government of India. Presented an AI-driven solution to a national-level problem statement, competing against teams from across the country.",
-    skills: ["Innovation", "AI Solutions", "Team Leadership", "System Design"],
+      "Participated in Smart India Hackathon 2025 — India's largest open innovation event run by the Government of India. Our team built an AI-based solution for a national problem statement and competed against teams from across the country.",
+    skills: ["AI Solutions", "Team Leadership", "System Design"],
     color: "#10b981",
     bg: "rgba(16,185,129,0.07)",
     border: "rgba(16,185,129,0.18)",

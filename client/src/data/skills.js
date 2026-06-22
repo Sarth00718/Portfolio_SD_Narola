@@ -1,5 +1,5 @@
 // ============================================================
-//  SKILLS DATA — Tag-based, no fake percentages
+//  SKILLS DATA — Sarth Narola
 // ============================================================
 
 export const SKILL_CATEGORIES = [
@@ -49,8 +49,7 @@ export const SKILL_CATEGORIES = [
       'FastAPI',
       'REST APIs',
       'Socket.IO',
-      'JWT Auth',
-      'MVC Architecture',
+      'JWT Auth'
     ],
   },
   {
@@ -64,7 +63,6 @@ export const SKILL_CATEGORIES = [
       'MongoDB',
       'PostgreSQL',
       'MySQL',
-      'Mongoose ODM',
       'FAISS Vector DB',
     ],
   },
@@ -77,13 +75,13 @@ export const SKILL_CATEGORIES = [
     border: 'rgba(14,165,233,0.25)',
     skills: [
       'LangChain',
-      'RAG Architecture',
+      'RAG Pipelines',       // "Architecture" sounds like a buzzword here
       'HuggingFace',
       'Groq LLaMA',
       'Google Gemini API',
       'Scikit-learn',
       'Pandas',
-      'NumPy',
+      'NumPy'
     ],
   },
   {
@@ -95,13 +93,12 @@ export const SKILL_CATEGORIES = [
     border: 'rgba(59,130,246,0.25)',
     skills: [
       'Git & GitHub',
-      'Docker (Basics)',
       'Cloudinary',
       'Firebase',
       'Postman',
       'Vercel',
       'Render',
-      'VS Code',
+      'VS Code'
     ],
   },
 ];

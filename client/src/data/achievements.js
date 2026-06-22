@@ -64,7 +64,7 @@ export const CP_PROFILES = [
     handle: "sarthnarola007",
     link: "https://codeforces.com/profile/sarthnarola007",
     status: "Competitive Programmer",
-    description: "Participating in regular contests to improve problem-solving skills and algorithmic thinking",
+    description: "Participating in contests to improve problem-solving skills and algorithmic thinking",
     color: "#3b82f6",
     bgColor: "rgba(59,130,246,0.05)",
     borderColor: "rgba(59,130,246,0.2)",
