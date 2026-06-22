@@ -221,7 +221,7 @@ function AchievementCard({ ach, index, isExpanded, onToggle, isDark }) {
 function JourneyBanner({ inView, isDark }) {
   const highlights = [
     { icon: "🏅", label: "Amazon ML School", value: "Selected" },
-    { icon: "🎓", label: "CGPA", value: "9.10" },
+    { icon: "🎓", label: "CGPA", value: "9.11" },
     { icon: "⚡", label: "Hackathons", value: "3+" },
     { icon: "🇮🇳", label: "SIH Participant", value: "2024" },
   ];

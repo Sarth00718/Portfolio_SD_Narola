@@ -14,7 +14,7 @@ export const PROFILE = {
   github: "https://github.com/Sarth00718",
   linkedin: "https://linkedin.com/in/sarth-narola-223002323",
   university: "Nirma University",
-  cgpa: "9.10",
+  cgpa: "9.11",
   graduationYear: "2027",
   
   // Professional Summary

@@ -26,9 +26,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["DM Sans", "system-ui", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
-        display: ["Syne", "system-ui", "sans-serif"],
+        display: ["Outfit", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "hero-gradient": "linear-gradient(160deg, #050810 0%, #0c1120 50%, #050810 100%)",

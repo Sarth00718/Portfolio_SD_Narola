@@ -94,7 +94,7 @@ export default function AboutSection() {
                 Nirma University
               </span>{" "}
               with a CGPA of{" "}
-              <span style={{ color: "#60a5fa", fontWeight: 700 }}>9.10</span>. I
+              <span style={{ color: "#60a5fa", fontWeight: 700 }}>9.11</span>. I
               am passionate about building production-ready web applications and
               AI-integrated systems.
             </p>
@@ -321,7 +321,7 @@ export default function AboutSection() {
                     color: "#60a5fa",
                   }}
                 >
-                  9.10 / 10.0
+                  9.11 / 10.0
                 </span>
               </div>
               <div

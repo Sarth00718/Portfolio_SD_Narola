@@ -25,7 +25,7 @@
 
 A **production-quality personal portfolio** built from scratch to showcase projects, skills, achievements, and academic background. Designed with a **mobile-first philosophy**, full **dark/light mode**, fluid responsive typography using `clamp()`, and smooth micro-animations throughout — delivering a premium, interactive experience on every device.
 
-> **Pre-final year B.Tech CSE student** at Nirma University (2022–2027) · CGPA: 9.10  
+> **Pre-final year B.Tech CSE student** at Nirma University (2022–2027) · CGPA: 9.11  
 > Specializing in **MERN stack**, **AI-integrated systems**, and **full-stack product development**
 
 ---
@@ -176,7 +176,7 @@ Configured in `vite.config.js` for clean imports:
 
 | Section          | Description                                                                            |
 | ---------------- | -------------------------------------------------------------------------------------- |
-| **Hero**         | Name, typewriter role animation, social links, stat counters (10+ projects, 9.10 CGPA) |
+| **Hero**         | Name, typewriter role animation, social links, stat counters (10+ projects, 9.11 CGPA) |
 | **About**        | Bio, education (Nirma University), tech stack, contact links                           |
 | **Skills**       | Categorized tech skills with icons — Frontend, Backend, AI/ML, Cloud, Tools            |
 | **Projects**     | Core MERN + AI projects: FinChatBot, Smart Expense Tracker, TaskFlow                   |
