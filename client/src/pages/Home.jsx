@@ -8,11 +8,12 @@ import ScrollProgress from "@components/common/ScrollProgress";
 import BackToTop from "@components/common/BackToTop";
 
 const AboutSection = lazy(() => import("@components/sections/AboutSection"));
+const SkillsSection = lazy(() => import("@components/sections/SkillsSection"));
+const ExperienceSection = lazy(() => import("@components/sections/ExperienceSection"));
 const ProjectsSection = lazy(() => import("@components/sections/ProjectsSection"));
 const HackathonSection = lazy(() => import("@components/sections/HackathonSection"));
 const MLProjectsSection = lazy(() => import("@components/sections/MLProjectsSection"));
 const DSAProjectsSection = lazy(() => import("@components/sections/DSAProjectsSection"));
-const SkillsSection = lazy(() => import("@components/sections/SkillsSection"));
 const AchievementsSection = lazy(() => import("@components/sections/AchievementsSection"));
 const CertificatesSection = lazy(() => import("@components/sections/CertificatesSection"));
 const CompetitiveProgramming = lazy(() => import("@components/sections/CompetitiveProgrammingSection"));
@@ -45,11 +46,12 @@ export default function Home() {
         <main id="main-content" role="main">
           <HeroSection />
           <Suspense fallback={<SectionLoader />}><AboutSection /></Suspense>
+          <Suspense fallback={<SectionLoader />}><SkillsSection /></Suspense>
+          <Suspense fallback={<SectionLoader />}><ExperienceSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><ProjectsSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><HackathonSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><MLProjectsSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><DSAProjectsSection /></Suspense>
-          <Suspense fallback={<SectionLoader />}><SkillsSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><AchievementsSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><CertificatesSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><CompetitiveProgramming /></Suspense>

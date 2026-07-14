@@ -6,9 +6,10 @@ import { PROFILE } from "@data/achievements";
 
 const NAV_ITEMS = [
   { label: "About",    href: "#about" },
+  { label: "Skills",   href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Hacks",    href: "#hackathon", title: "Hackathons" },
-  { label: "Skills",   href: "#skills" },
   { label: "Wins",     href: "#achievements", title: "Achievements" },
   { label: "Certs",    href: "#certificates", title: "Certificates" },
   { label: "CP",       href: "#competitive-programming", title: "Competitive Programming" },

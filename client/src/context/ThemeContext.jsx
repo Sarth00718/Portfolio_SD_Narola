@@ -28,7 +28,7 @@ export function ThemeProvider({ children }) {
     localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
-  const toggleTheme = () =>
+  const     toggleTheme = () =>
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 
   return (
