@@ -17,9 +17,9 @@ const QUICK_LINKS = [
 ];
 
 const SOCIAL = [
-  { icon: Github,   href: PROFILE.github,           label: "GitHub",   hoverColor: "#f0f4ff" },
-  { icon: Linkedin, href: PROFILE.linkedin,          label: "LinkedIn", hoverColor: "#60a5fa" },
-  { icon: Mail,     href: `mailto:${PROFILE.email}`, label: "Email",    hoverColor: "#93c5fd" },
+  { icon: Github,   href: PROFILE.github,           label: "GitHub" },
+  { icon: Linkedin, href: PROFILE.linkedin,          label: "LinkedIn" },
+  { icon: Mail,     href: `mailto:${PROFILE.email}`, label: "Email" },
 ];
 
 export default function Footer() {
@@ -31,11 +31,10 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      className="border-t"
+    <footer className="border-t"
       style={{
-        background: isDark ? "rgba(5,8,16,0.97)" : "rgba(250,251,255,0.97)",
-        borderColor: isDark ? "rgba(255,255,255,0.06)" : "rgba(99,102,241,0.1)",
+        background: isDark ? "rgba(5,8,15,0.97)" : "rgba(250,251,253,0.97)",
+        borderColor: isDark ? "rgba(255,255,255,0.05)" : "rgba(59,130,246,0.08)",
       }}
       role="contentinfo"
     >
@@ -44,55 +43,33 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center font-display font-black text-sm"
-                style={{
-                  background: "linear-gradient(135deg, #2563eb, #3b82f6)",
-                  color: "#fff",
-                  boxShadow: "0 4px 12px rgba(99,102,241,0.35)",
-                }}
-              >
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center font-display font-black text-sm"
+                style={{ background: "linear-gradient(135deg, #3b82f6, #2563eb)", color: "#fff", boxShadow: "0 4px 12px rgba(59,130,246,0.3)" }}>
                 SN
               </div>
-              <span
-                className="font-display font-bold"
-                style={{
-                  fontSize: "1.1rem",
-                  letterSpacing: "-0.03em",
-                  color: isDark ? "#f0f4ff" : "#0f0f23",
-                }}
-              >
+              <span className="font-display font-bold" style={{ fontSize: "1.05rem", letterSpacing: "-0.03em", color: isDark ? "#e8ecf4" : "#0f0f1a" }}>
                 Sarth Narola
               </span>
             </div>
-            <p style={{ fontSize: "0.875rem", color: isDark ? "#64748b" : "#9ca3af", lineHeight: 1.65, maxWidth: "240px" }}>
+            <p style={{ fontSize: "0.85rem", color: isDark ? "#64748b" : "#9ca3af", lineHeight: 1.65, maxWidth: "240px" }}>
               Full Stack Developer & AI Engineer building production-ready systems.
             </p>
             <div className="flex gap-2">
-              {SOCIAL.map(({ icon: Icon, href, label, hoverColor }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  aria-label={label}
+              {SOCIAL.map(({ icon: Icon, href, label }) => (
+                <motion.a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer" aria-label={label}
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-9 h-9 flex items-center justify-center rounded-xl no-min-size transition-all"
+                  className="w-9 h-9 flex items-center justify-center rounded-xl no-min-size"
                   style={{
-                    background: isDark ? "rgba(255,255,255,0.04)" : "rgba(99,102,241,0.05)",
-                    border: `1px solid ${isDark ? "rgba(255,255,255,0.07)" : "rgba(99,102,241,0.1)"}`,
+                    background: isDark ? "rgba(255,255,255,0.035)" : "rgba(59,130,246,0.04)",
+                    border: `1px solid ${isDark ? "rgba(255,255,255,0.06)" : "rgba(59,130,246,0.1)"}`,
                     color: isDark ? "#64748b" : "#9ca3af",
+                    transition: "all 0.2s",
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = hoverColor;
-                    e.currentTarget.style.borderColor = "rgba(99,102,241,0.3)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = isDark ? "#64748b" : "#9ca3af";
-                    e.currentTarget.style.borderColor = isDark ? "rgba(255,255,255,0.07)" : "rgba(99,102,241,0.1)";
-                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "#60a5fa"; e.currentTarget.style.borderColor = "rgba(59,130,246,0.25)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? "#64748b" : "#9ca3af"; e.currentTarget.style.borderColor = isDark ? "rgba(255,255,255,0.06)" : "rgba(59,130,246,0.1)"; }}
                 >
-                  <Icon size={15} />
+                  <Icon size={14} />
                 </motion.a>
               ))}
             </div>
@@ -100,41 +77,23 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4
-              style={{
-                fontSize: "0.78rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: isDark ? "#475569" : "#9ca3af",
-                marginBottom: "1rem",
-                fontFamily: "'JetBrains Mono', monospace",
-              }}
-            >
+            <h4 style={{ fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: isDark ? "#475569" : "#9ca3af", marginBottom: "1rem", fontFamily: "'JetBrains Mono', monospace" }}>
               Navigate
             </h4>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
               {QUICK_LINKS.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => scrollTo(link.href)}
-                  className="text-left no-min-size group flex items-center gap-1 transition-colors"
+                <button key={link.label} onClick={() => scrollTo(link.href)}
+                  className="text-left no-min-size group flex items-center gap-1"
                   style={{
-                    fontSize: "0.875rem",
-                    color: isDark ? "#64748b" : "#9ca3af",
-                    fontFamily: "'DM Sans', sans-serif",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: "0.15rem 0",
-                    minHeight: "auto",
+                    fontSize: "0.85rem", color: isDark ? "#64748b" : "#9ca3af",
+                    background: "none", border: "none", cursor: "pointer",
+                    padding: "0.15rem 0", minHeight: "auto",
+                    transition: "color 0.2s",
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = isDark ? "#60a5fa" : "#1d4ed8"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "#60a5fa"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? "#64748b" : "#9ca3af"; }}
                 >
-                  <ArrowUpRight size={12} style={{ opacity: 0, transition: "opacity 0.2s" }}
-                    className="group-hover:opacity-100"
-                  />
+                  <ArrowUpRight size={11} style={{ opacity: 0, transition: "opacity 0.2s" }} className="group-hover:opacity-100" />
                   {link.label}
                 </button>
               ))}
@@ -143,59 +102,31 @@ export default function Footer() {
 
           {/* Status */}
           <div>
-            <h4
-              style={{
-                fontSize: "0.78rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: isDark ? "#475569" : "#9ca3af",
-                marginBottom: "1rem",
-                fontFamily: "'JetBrains Mono', monospace",
-              }}
-            >
+            <h4 style={{ fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: isDark ? "#475569" : "#9ca3af", marginBottom: "1rem", fontFamily: "'JetBrains Mono', monospace" }}>
               Status
             </h4>
-            <div
-              className="rounded-2xl p-4 border"
-              style={{
-                background: isDark ? "rgba(99,102,241,0.06)" : "rgba(99,102,241,0.04)",
-                border: isDark ? "1px solid rgba(99,102,241,0.18)" : "1px solid rgba(99,102,241,0.12)",
-              }}
-            >
+            <div className="rounded-2xl p-4 border"
+              style={{ background: isDark ? "rgba(59,130,246,0.04)" : "rgba(59,130,246,0.03)", borderColor: isDark ? "rgba(59,130,246,0.12)" : "rgba(59,130,246,0.1)" }}>
               <div className="flex items-center gap-2 mb-2">
-                <span
-                  className="w-2 h-2 rounded-full bg-emerald-400"
-                  style={{ boxShadow: "0 0 6px rgba(52,211,153,0.8)" }}
-                />
-                <span style={{ fontSize: "0.825rem", fontWeight: 700, color: "#34d399" }}>
-                  Available for Opportunities
-                </span>
+                <span className="w-2 h-2 rounded-full" style={{ background: "#34d399", boxShadow: "0 0 6px rgba(52,211,153,0.8)" }} />
+                <span style={{ fontSize: "0.8rem", fontWeight: 700, color: "#34d399" }}>Available for Opportunities</span>
               </div>
-              <p style={{ fontSize: "0.8rem", color: isDark ? "#64748b" : "#9ca3af" }}>
+              <p style={{ fontSize: "0.78rem", color: isDark ? "#64748b" : "#9ca3af" }}>
                 Open to SDE, Full Stack, and AI/ML roles. Remote, hybrid, or on-site.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)" }} />
+        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(59,130,246,0.15), transparent)" }} />
 
-        {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6">
-          <p style={{ fontSize: "0.8rem", color: isDark ? "#475569" : "#9ca3af" }}>
-            © {YEAR} Sarth Narola. Built with{" "}
-            <Heart size={12} style={{ display: "inline", color: "#f87171", verticalAlign: "middle" }} />{" "}
+          <p style={{ fontSize: "0.78rem", color: isDark ? "#475569" : "#9ca3af" }}>
+            &copy; {YEAR} Sarth Narola. Built with{" "}
+            <Heart size={11} style={{ display: "inline", color: "#2563eb", verticalAlign: "middle" }} />{" "}
             using React + Vite + Tailwind.
           </p>
-          <p
-            style={{
-              fontSize: "0.75rem",
-              color: isDark ? "#475569" : "#9ca3af",
-              fontFamily: "'JetBrains Mono', monospace",
-            }}
-          >
+          <p style={{ fontSize: "0.72rem", color: isDark ? "#475569" : "#9ca3af", fontFamily: "'JetBrains Mono', monospace" }}>
             Roll No. {PROFILE.rollNo}
           </p>
         </div>

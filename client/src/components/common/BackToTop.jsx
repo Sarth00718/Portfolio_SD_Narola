@@ -23,8 +23,8 @@ export default function BackToTop() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full flex items-center justify-center no-min-size"
           style={{
-            background: "linear-gradient(135deg, #2563eb, #3b82f6)",
-            boxShadow: "0 4px 20px rgba(99,102,241,0.5)",
+            background: "linear-gradient(135deg, #3b82f6, #2563eb)",
+            boxShadow: "0 4px 20px rgba(59,130,246,0.4)",
             border: "1px solid rgba(255,255,255,0.1)",
           }}
           aria-label="Back to top"

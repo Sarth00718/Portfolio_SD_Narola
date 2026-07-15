@@ -3,45 +3,24 @@ import { useInView } from "react-intersection-observer";
 import { ExternalLink, Code2, Trophy } from "lucide-react";
 import { CP_PROFILES } from "@data/achievements";
 import { useTheme } from "@context/ThemeContext";
+import { scaleIn } from "@components/common/AnimationVariants";
 
 const PLATFORM_LOGOS = {
   LeetCode: (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="w-6 h-6"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"
-        fill="#f59e0b"
-      />
+    <svg viewBox="0 0 128 128" className="w-7 h-7" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#b3b1b0" d="M117.555 76.558c0-3.957-3.008-7.178-6.72-7.178H57.159c-3.712 0-6.72 3.221-6.72 7.178c0 3.958 3.002 7.18 6.72 7.18h53.676c3.712.005 6.72-3.217 6.72-7.18"/>
+      <path fill="#ffa116" d="M18.79 96.996 41.793 120.256c5.19 5.221 12.363 7.744 20.283 7.744s15.094-2.73 20.294-7.968l13.803-14.065c2.72-2.741 2.624-7.28-.208-10.133-2.832-2.854-7.333-2.95-10.048-.208L71.645 109.53c-2.465 2.49-5.878 3.53-9.649 3.53s-7.179-1.04-9.653-3.53L29.419 86.26c-2.47-2.49-3.712-6.133-3.712-9.936s1.243-7.238 3.712-9.728l22.854-23.361c2.47-2.49 5.952-3.44 9.718-3.44s7.179 1.04 9.648 3.53l14.273 13.9c2.72 2.746 7.221 2.65 10.053-.203 2.832-2.859 2.928-7.398.208-10.14L82.37 32.825A26.64 26.64 0 0 0 69.612 25.731l-.18-.037 13.05-13.35c2.73-2.741 2.635-7.285-.197-10.139S74.945-.74 72.22 2.002L18.79 55.87c-5.19 5.237-7.905 12.464-7.905 20.454S13.6 91.77 18.79 96.996"/>
+      <path fill="#070706" d="M43.5 121.674A11.3 11.3 0 0 1 40.972 119.749C33.894 112.639 26.785 105.562 19.723 98.431 9.115 87.721 7.445 72.1 15.531 59.39a32 32 0 0 1 4.475-5.355L71.33 2.605c3.333-3.34 7.99-3.478 11.088-.358 2.987 3.003 2.81 7.76-.416 11.019-4.101 4.139-8.208 8.267-12.315 12.4-.219.651-.747 1.067-1.2 1.531-4.603 4.672-9.334 9.222-13.872 13.963-.592.619-1.398.992-1.984 1.627-7.59 7.59-15.27 15.094-22.753 22.784-6.054 6.225-5.85 15.67.363 22.012 6.976 7.125 14.075 14.134 21.126 21.195.357.357.725.704 1.088 1.056 2.496 1.616 2.528 6.667.976 8.912-1.712 2.48-3.947 4-7.11 3.883-1.061-.032-1.936-.458-2.821-.955"/>
     </svg>
   ),
   Codeforces: (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="w-6 h-6"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.672 21 0 20.328 0 19.5V9c0-.828.672-1.5 1.5-1.5h3zm9.75-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-15c0-.828.672-1.5 1.5-1.5h3zm9.75 7.5c.828 0 1.5.672 1.5 1.5v7.5c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V12c0-.828.672-1.5 1.5-1.5h3z"
-        fill="#3b82f6"
-      />
+    <svg viewBox="0 0 24 24" className="w-7 h-7" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#1f8acb" d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3C.673 21 0 20.328 0 19.5V9c0-.828.673-1.5 1.5-1.5zm9-4.5A1.5 1.5 0 0 1 15 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3c-.827 0-1.5-.672-1.5-1.5v-15c0-.828.673-1.5 1.5-1.5zm9 7.5A1.5 1.5 0 0 1 24 12v7.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V12a1.5 1.5 0 0 1 1.5-1.5z"/>
     </svg>
   ),
   CodeChef: (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="w-6 h-6"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M11.257.004C5.37-.128.24 4.837.009 10.723c-.105 2.607.61 5.034 1.999 7.026l-.148 4.662 4.458-1.354a10.686 10.686 0 0 0 4.93 1.937l.016.006h.033c.29.025.58.04.875.04 5.96 0 10.84-4.8 10.84-10.764C23.01 6.302 18.337 1.255 11.914.074c-.218-.04-.438-.063-.657-.07zm1.2 1.705c5.09.572 8.986 4.87 8.986 10.067 0 5.598-4.572 10.178-10.187 10.178-.254 0-.505-.01-.754-.031a9.027 9.027 0 0 1-4.402-1.665L5.59 20.38l-.114-3.663a9.18 9.18 0 0 1-1.909-5.57c0-4.985 3.94-9.096 8.89-9.438zm.054 2.78c-3.57 0-6.48 2.906-6.48 6.47 0 2.42 1.346 4.544 3.342 5.684.64.363 1.356.593 2.127.66l1.01.087V12.4h-2.19V10.81h2.19V9.37c0-1.78 1.088-2.722 2.692-2.722.544 0 1.134.04 1.678.1V8.58h-1.148c-.906 0-1.083.425-1.083 1.05v1.18h2.13l-.282 1.59h-1.848v4.852c2.32-.726 4.006-2.878 4.006-5.43 0-3.565-2.91-6.472-6.144-6.333z"
-        fill="#a16207"
-      />
+    <svg viewBox="0 0 24 24" className="w-7 h-7" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#5b4636" d="M11.257.004q-.554.014-1.1.095c-.54.054-1.08.325-1.675.595-.757.324-1.515.649-2.218.703-1.19.378-1.568.919-1.892 1.351 0 .054-.054.108-.054.108-.433.865-.487 1.73-.325 2.595.162.541.378 1.029.54 1.515.38 1.028.758 2 .92 3.136.163.325.324.757.432 1.19.27.865.542 1.838 1.353 2.595l.006-.003c.017.019.03.04.048.057l.021-.01-.02-.584c.648-.974 1.566-1.623 2.864-1.893.52-.11 1.081-.15 1.663-.128a8.8 8.8 0 0 1 1.798.236c1.46.378 2.595 1.136 2.65 1.785.027.354.04.695.032 1.036q-.001.096-.007.193l.136.068a.64.64 0 0 0 .206-.19l.003-.003.006-.008c.04-.054.075-.124.11-.194.02-.037.038-.086.056-.129.205-.462.362-1.153.538-1.963.054-.27.11-.487.163-.703.433-.973 1.027-1.838 1.622-2.65.973-1.35 1.892-2.595 1.784-4.055-1.784-3.461-4.272-4.002-5.57-4.272-.216-.054-.323-.054-.485-.108-1.338-.244-2.494-.396-3.605-.365M16.3 14.383a10 10 0 0 0-.032-.983c-.054-.703-1.19-1.46-2.704-1.838a9.5 9.5 0 0 0-1.744-.236 6.8 6.8 0 0 0-1.555.128c-1.244.27-2.216.92-2.811 1.892l.051 1.431c.667-.355 1.733-.874 3.14-1 .065-.005.136-.005.204-.009.117-.013.266-.044.444-.044 1.607 0 3.268.534 4.877 1.648q.057-.412.07-.823l.045.023c.002-.063.014-.127.015-.19zM11.256.058c.124-.004.254.01.379.011q-.345-.003-.687.016c.103-.006.205-.024.308-.027M10.44.13c-.076.009-.153.013-.229.024-.817.117-1.774.701-2.75 1.045.355-.132.714-.296 1.075-.45.54-.27 1.135-.541 1.621-.595.094-.014.189-.013.283-.024m-.229.24c.162 0 .379 0 .541.054a1 1 0 0 0-.37-.014 1.2 1.2 0 0 1 .316.068c.58 1-.426 5.279-.679 8.149a57 57 0 0 0 .463 2.72c-.703-1.784-1.406-4.921-1.515-7.354-.054-.973.001-1.839.218-2.487C9.4.855 9.725.423 10.21.369zm3.136.27c-.81 2.11-.918 6.11-.972 7.354-.054.54 0 1.73.054 2.595 0 .216.054.432.054.649 0-.217-.054-.379-.054-.595-.433-3.244-.974-7.136.918-10.002m3.352.379c-.27 2.162-1.405 3.19-1.783 5.3-.108 1.676-.325 3.622-.379 5.298-.054-1.676 0-3.46.27-5.245.27-1.838.865-3.677 1.892-5.353m-10.17.63a.86.86 0 0 1 .6.236l-.014-.007c.133.092.266.209.393.384-.204.968.255 3.032.04 4.67.076 1.548.071 3.18.849 4.459-.98-1.51-1.176-3.437-1.322-5.236-.113-1.09-.204-2.097-.464-2.903-.144-.305-.269-.575-.384-.822-.024-.037-.044-.079-.07-.114a.58.58 0 0 1-.162-.377c0-.054.053-.162.108-.162.054-.054.161-.056.215-.11a1 1 0 0 1 .21-.018m-1.347.613c-.06.02-.092.041-.14.061.177-.034.362.034.52.318-.188.892.436 3.369.428 5.104.313 1.848.55 3.85 1.572 5.115-1.19-1.351-1.676-3.73-2.054-5.731-.325-1.568-.596-2.92-1.136-3.352-.054-.108-.108-.163-.108-.271 0-.162 0-.379.108-.595-.277.634-.405 1.267-.37 1.901a3.84 3.84 0 0 1 .37-1.901c0-.054.054-.054.054-.108.012-.016.031-.035.044-.051a.9.9 0 0 1 .226-.257c.055-.061.096-.12.159-.182-.053.056-.088.11-.134.165.027-.018.052-.037.084-.052a.5.5 0 0 1 .377-.164m-.377.164c-.004.007-.008.01-.012.018l.037-.03zm14.76 1.134-.005.015c.038-.005.075-.017.113-.015-.037-.002-.076.01-.115.02-.863 2.642-1.887 5.284-2.911 7.926l-.002.003c-.087.465-.234.884-.54 1.19.433-.487.486-1.191.54-2.056.054-.811.054-1.676.487-2.542 0-.053.001-.105.053-.159l.001-.002c.097-.353.202-.689.317-1.018.418-1.29 1.14-3.166 2.013-3.34.016-.006.034-.019.05-.022M8.374 16.21l-.324.108c.162.217.27.38.378.433a.8.8 0 0 0 .379.108c.054 0 .161 0 .215-.054l.812-.27c.054 0 .108-.054.162-.054.108 0 .162 0 .27.054l.271.27.27-.054c-.108-.162-.27-.323-.378-.377s-.217-.11-.379-.11h-.108l-.866.325h-.161c-.109 0-.216 0-.27-.054s-.163-.162-.271-.325m-2.596.541c-.27.162-.649.433-1.19.649s-.973.433-1.19.649q-.323.324-.323.649c0 .108.054.163.162.217.054.054.163.054.217.108a28 28 0 0 1 2.216 1.08c.109.054.217.163.272.217.054.054.107.054.161.054.109 0 .27-.053.378-.162q.162-.162.163-.325c0-.108-.055-.161-.163-.215 0 0-.433-.217-1.19-.541a12 12 0 0 1-1.188-.595c.162-.27.486-.487.973-.703.54-.216.92-.433 1.081-.595.054-.054.054-.108.054-.162a.4.4 0 0 0-.108-.217.42.42 0 0 0-.27-.108zm11.247 0a.4.4 0 0 0-.216.108c-.054.108-.109.163-.109.217v.054c.162.162.38.27.704.378.27.054.54.163.811.217q.486.162.649.486v.055c0 .054-.109.162-.325.27-.108.054-.325.217-.595.433-.27.162-.433.323-.595.377-.216.109-.378.217-.432.326-.054.054-.054.107-.054.161 0 .108.054.108.108.216s.162.11.216.11.108-.056.162-.056c.27-.162.65-.378 1.082-.757.486-.378.865-.648 1.082-.81.216-.108.323-.217.323-.38 0-.053 0-.161-.108-.215-.378-.433-.918-.702-1.567-.919-.108-.054-.27-.109-.595-.163-.162-.054-.325-.108-.433-.108zm-2.974.81c-.27 0-.487.056-.649.218-.216.162-.27.432-.216.757 0 .27.108.486.27.703s.379.325.595.325c.162 0 .27-.056.433-.11.27-.162.379-.432.379-.918 0-.379-.109-.649-.271-.81a.9.9 0 0 0-.541-.164zm-4.488.055c-.27 0-.486.055-.648.217-.217.162-.27.432-.216.757 0 .27.107.486.27.702s.378.326.594.326c.163 0 .271-.056.433-.11.27-.162.378-.432.378-.918 0-.433-.108-.703-.27-.81a.9.9 0 0 0-.54-.164zm0 .65c.163 0 .271.108.271.27s-.163.27-.27.27c-.163 0-.27-.108-.27-.27s.107-.27.27-.27m4.38.054c.162 0 .271.107.271.27 0 .108-.109.27-.27.27-.163 0-.27-.108-.27-.27s.107-.27.27-.27m-2.703 2.108.162.324a1 1 0 0 0 .216.271c.054.054.163.162.27.162h.109c.108 0 .161 0 .215-.054s.164-.054.218-.108l.161-.162c.054-.054.108-.109.108-.163.054-.054.054-.108.108-.162 0-.054.054-.108.054-.108-.054.108-.162.216-.216.324-.108.054-.161.163-.27.163-.107.054-.216.054-.324.054s-.216 0-.27-.054c-.108 0-.163-.054-.217-.108l-.162-.163c-.054-.054-.108-.162-.162-.216m-.866 1.028c-1.136 0-1.838 1.514-3.46.162-.432 2.65 2.758 2.866 4.11 1.73.92-.81.648-1.946-.65-1.892m2.866 0c-1.297-.054-1.568 1.082-.648 1.893 1.351 1.135 4.54.918 4.108-1.731-1.622 1.352-2.27-.162-3.46-.162"/>
     </svg>
   ),
 };
@@ -50,222 +29,66 @@ export default function CompetitiveProgrammingSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const { isDark } = useTheme();
 
-  const topicBg = isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)";
-  const topicBorder = isDark
-    ? "1px solid rgba(255,255,255,0.08)"
-    : "1px solid rgba(0,0,0,0.08)";
-  const topicColor = isDark ? "#94a3b8" : "#475569";
-  const labelColor = isDark ? "#64748b" : "#94a3b8";
-
   return (
-    <section
-      id="competitive-programming"
-      className="section-container pt-0"
-      ref={ref}
-    >
-      {/* Header */}
+    <section id="competitive-programming" className="section-container pt-0" ref={ref}>
       <div className="text-center mb-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="mb-4"
-        >
-          <span className="section-tag">
-            <Trophy size={14} />
-            Competitive Programming
-          </span>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="mb-4">
+          <span className="section-tag"><Trophy size={12} />Competitive Programming</span>
         </motion.div>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1 }}
-          className="section-title"
-        >
+        <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="section-title">
           Problem Solving Profiles
         </motion.h2>
-        <div className="gradient-divider" />
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.2 }}
-          style={{
-            color: "var(--text-secondary)",
-            maxWidth: "520px",
-            margin: "1rem auto 0",
-            fontSize: "clamp(0.875rem,2vw,1rem)",
-            lineHeight: 1.7,
-          }}
-        >
-          Actively practicing data structures, algorithms, and problem solving
-          across competitive programming platforms.
-        </motion.p>
+        <div className="section-divider" />
       </div>
 
-      {/* Platform Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-4xl mx-auto">
         {CP_PROFILES.map((cp, i) => (
           <motion.a
-            key={cp.platform}
-            href={cp.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: i * 0.12 }}
-            whileHover={{ y: -8, scale: 1.02 }}
-            whileTap={{ scale: 0.97 }}
-            className="group relative rounded-2xl p-6 border transition-all duration-300 text-center overflow-hidden"
+            key={cp.platform} href={cp.link} target="_blank" rel="noopener noreferrer"
+            variants={scaleIn} custom={i} initial="hidden" animate={inView ? "visible" : "hidden"}
+            whileHover={{ y: -6, scale: 1.02 }}
+            className="group relative rounded-2xl p-6 border text-center overflow-hidden"
             style={{
               background: isDark ? cp.bgColor : "rgba(255,255,255,0.9)",
-              border: isDark
-                ? `1px solid ${cp.borderColor}`
-                : `1px solid ${cp.borderColor}`,
+              borderColor: cp.borderColor,
             }}
           >
-            {/* Hover glow */}
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
-              style={{
-                background: `radial-gradient(ellipse at 50% 0%, ${cp.color}15, transparent 70%)`,
-              }}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+              style={{ background: `radial-gradient(ellipse at 50% 0%, ${cp.color}15, transparent 70%)` }}
             />
 
-            {/* Platform Logo */}
             <div className="flex justify-center mb-4">
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110"
-                style={{
-                  background: isDark ? cp.bgColor : `${cp.color}10`,
-                  border: `1px solid ${cp.borderColor}`,
-                  boxShadow: `0 0 20px ${cp.color}20`,
-                }}
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110"
+                style={{ background: isDark ? cp.bgColor : `${cp.color}10`, borderColor: cp.borderColor }}
               >
-                {PLATFORM_LOGOS[cp.platform] || (
-                  <Code2 size={24} style={{ color: cp.color }} />
-                )}
+                {PLATFORM_LOGOS[cp.platform] || <Code2 size={22} style={{ color: cp.color }} />}
               </div>
             </div>
 
-            <h3
-              style={{
-                fontFamily: "'Outfit','Inter',sans-serif",
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: cp.color,
-                marginBottom: "4px",
-              }}
-            >
+            <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 700, fontSize: "1.05rem", color: cp.color, marginBottom: "4px" }}>
               {cp.platform}
             </h3>
-            <p
-              style={{
-                fontSize: "0.8rem",
-                fontFamily: "'JetBrains Mono',monospace",
-                color: isDark ? "#64748b" : "#94a3b8",
-                marginBottom: "12px",
-              }}
-            >
+            <p style={{ fontSize: "0.78rem", fontFamily: "'JetBrains Mono',monospace", color: isDark ? "#64748b" : "#94a3b8", marginBottom: "10px" }}>
               @{cp.handle}
             </p>
 
-            {/* Status badge */}
-            <div
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-4"
-              style={{
-                background: `${cp.color}15`,
-                border: `1px solid ${cp.color}30`,
-                color: cp.color,
-                fontSize: "0.78rem",
-                fontWeight: 600,
-              }}
-            >
-              {cp.platform === "CodeChef" && <span>★★</span>}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-3"
+              style={{ background: `${cp.color}15`, border: `1px solid ${cp.color}30`, color: cp.color, fontSize: "0.75rem", fontWeight: 600 }}>
               {cp.status}
             </div>
 
-            <p
-              style={{
-                fontSize: "0.8rem",
-                color: isDark ? "#64748b" : "#64748b",
-                lineHeight: 1.6,
-                marginBottom: "16px",
-              }}
-            >
+            <p style={{ fontSize: "0.78rem", color: isDark ? "#64748b" : "#64748b", lineHeight: 1.6, marginBottom: "14px" }}>
               {cp.description}
             </p>
 
-            <div
-              className="flex items-center justify-center gap-1.5"
-              style={{ fontSize: "0.8rem", fontWeight: 600, color: cp.color }}
-            >
+            <div className="flex items-center justify-center gap-1 text-xs font-semibold group"
+              style={{ color: cp.color }}>
               View Profile
-              <ExternalLink
-                size={11}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
+              <ExternalLink size={10} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
           </motion.a>
         ))}
       </div>
-
-      {/* Focus areas */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: 0.5 }}
-        className="mt-10 max-w-4xl mx-auto"
-      >
-        <div
-          className="rounded-2xl p-6 border text-center"
-          style={{
-            background: isDark
-              ? "rgba(99,102,241,0.05)"
-              : "rgba(99,102,241,0.04)",
-            border: isDark
-              ? "1px solid rgba(99,102,241,0.15)"
-              : "1px solid rgba(99,102,241,0.15)",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "0.75rem",
-              color: labelColor,
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              marginBottom: "1rem",
-            }}
-          >
-            Practice Focus Areas
-          </p>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {[
-              "Arrays & Strings",
-              "Dynamic Programming",
-              "Graph Algorithms",
-              "Binary Search",
-              "Greedy Algorithms",
-              "Recursion & Backtracking",
-              "Sorting & Searching",
-              "Tree Traversals",
-              "Number Theory",
-            ].map((topic) => (
-              <span
-                key={topic}
-                style={{
-                  padding: "6px 12px",
-                  borderRadius: "8px",
-                  fontSize: "0.78rem",
-                  color: topicColor,
-                  background: topicBg,
-                  border: topicBorder,
-                }}
-              >
-                {topic}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 }

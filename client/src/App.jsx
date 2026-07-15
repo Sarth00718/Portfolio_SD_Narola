@@ -23,7 +23,7 @@ export default function App() {
             iconTheme: { primary: '#10b981', secondary: '#fff' },
           },
           error: {
-            iconTheme: { primary: '#f43f5e', secondary: '#fff' },
+            iconTheme: { primary: '#2563eb', secondary: '#fff' },
           },
         }}
       />

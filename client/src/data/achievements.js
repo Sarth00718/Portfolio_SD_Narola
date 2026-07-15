@@ -141,18 +141,16 @@ export const SKILL_PROFICIENCY = {
   },
   "Database": {
     "MongoDB": 85,
-    "PostgreSQL": 75,
-    "Redis": 70
+    "PostgreSQL": 50
   },
   "AI/ML": {
-    "LangChain": 80,
-    "RAG Pipelines": 82,
-    "FAISS": 78,
-    "Python": 85
+    "LangChain": 72,
+    "RAG Pipelines": 70,
+    "FAISS": 65,
+    "Python": 80
   },
   "DevOps": {
     "Git/GitHub": 90,
-    "Docker": 70,
     "Vercel": 85,
     "AWS Basics": 65
   }

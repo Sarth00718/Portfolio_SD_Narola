@@ -6,6 +6,7 @@ import HeroSection from "@components/sections/HeroSection";
 import SEOMeta from "@components/common/SEOMeta";
 import ScrollProgress from "@components/common/ScrollProgress";
 import BackToTop from "@components/common/BackToTop";
+import CustomCursor from "@components/common/CustomCursor";
 
 const AboutSection = lazy(() => import("@components/sections/AboutSection"));
 const SkillsSection = lazy(() => import("@components/sections/SkillsSection"));
@@ -23,14 +24,9 @@ function SectionLoader() {
   return (
     <div className="flex items-center justify-center py-20">
       <div className="relative w-10 h-10">
-        <div
-          className="absolute inset-0 rounded-full border-2"
-          style={{ borderColor: "rgba(99,102,241,0.2)" }}
-        />
-        <div
-          className="absolute inset-0 rounded-full border-t-2 animate-spin"
-          style={{ borderTopColor: "#2563eb", borderColor: "transparent" }}
-        />
+        <div className="absolute inset-0 rounded-full border-2" style={{ borderColor: "rgba(59,130,246,0.15)" }} />
+        <div className="absolute inset-0 rounded-full border-t-2 animate-spin"
+          style={{ borderTopColor: "#60a5fa", borderColor: "transparent" }} />
       </div>
     </div>
   );
@@ -41,6 +37,7 @@ export default function Home() {
     <HelmetProvider>
       <SEOMeta />
       <ScrollProgress />
+      <CustomCursor />
       <div className="relative min-h-screen w-full overflow-x-hidden">
         <Navbar />
         <main id="main-content" role="main">
