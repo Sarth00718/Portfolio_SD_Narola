@@ -22,7 +22,7 @@
 
 ---
 
-## 📖 About
+## 📖 About Section
 
 A **modern, production-ready personal portfolio** built from scratch to showcase projects, skills, achievements, and professional journey. Designed with a **mobile-first philosophy**, **dark/light mode** theming, fluid responsive typography using `clamp()`, glassmorphism UI, and smooth micro-animations throughout — delivering a premium, interactive experience on every device.
 
