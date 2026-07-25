@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { Award, ChevronDown } from "lucide-react";
 import { ACHIEVEMENTS } from "@data/achievements";
 import { useTheme } from "@context/ThemeContext";
-import { fadeUp, scaleIn } from "@components/common/AnimationVariants";
+import { cinematicSlideUp } from "@components/common/AnimationVariants";
 
 function AchievementCard({ ach, index, isExpanded, onToggle, isDark }) {
   const isEven = index % 2 === 0;
@@ -17,9 +17,9 @@ function AchievementCard({ ach, index, isExpanded, onToggle, isDark }) {
       className="relative"
     >
       <motion.div
-        whileHover={{ y: -3 }}
+        whileHover={{ y: -3, scale: 1.01 }}
         onClick={onToggle}
-        className="group relative rounded-2xl border overflow-hidden cursor-pointer"
+        className="group relative rounded-2xl border overflow-hidden cursor-pointer glass-card"
         style={{
           background: isExpanded
             ? `linear-gradient(135deg, ${ach.color}10, ${ach.color}04)`
@@ -30,13 +30,15 @@ function AchievementCard({ ach, index, isExpanded, onToggle, isDark }) {
       >
         <div className="p-5 sm:p-6">
           <div className="flex items-start gap-4">
-            <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0 relative overflow-hidden"
               style={{
                 background: `${ach.color}12`,
                 border: `1px solid ${ach.color}25`,
               }}
             >
-              {ach.icon}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+                   style={{ background: `radial-gradient(circle at center, ${ach.color}40, transparent 70%)` }} />
+              <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">{ach.icon}</div>
             </div>
 
             <div className="flex-1 min-w-0">
@@ -107,10 +109,10 @@ export default function AchievementsSection() {
   return (
     <section id="achievements" className="section-container pt-0" ref={ref}>
       <div className="text-center mb-14">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="mb-4">
+        <motion.div variants={cinematicSlideUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"} className="mb-4">
           <span className="section-tag"><Award size={12} />Achievements</span>
         </motion.div>
-        <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="section-title">
+        <motion.h2 variants={cinematicSlideUp} custom={1} initial="hidden" animate={inView ? "visible" : "hidden"} className="section-title">
           Achievements & Milestones
         </motion.h2>
         <div className="section-divider" />

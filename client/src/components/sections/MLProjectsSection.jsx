@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { Github, BrainCircuit } from "lucide-react";
 import { ML_PROJECTS } from "@data/projects";
 import { useTheme } from "@context/ThemeContext";
-import { scaleIn } from "@components/common/AnimationVariants";
+import { cinematicSlideUp, springBounce } from "@components/common/AnimationVariants";
 
 export default function MLProjectsSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -12,10 +12,10 @@ export default function MLProjectsSection() {
   return (
     <section id="ml-projects" className="section-container pt-0" ref={ref}>
       <div className="text-center mb-14">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="mb-4">
+        <motion.div variants={cinematicSlideUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"} className="mb-4">
           <span className="section-tag"><BrainCircuit size={12} />Machine Learning</span>
         </motion.div>
-        <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="section-title">
+        <motion.h2 variants={cinematicSlideUp} custom={1} initial="hidden" animate={inView ? "visible" : "hidden"} className="section-title">
           Machine Learning Projects
         </motion.h2>
         <div className="section-divider" />
@@ -25,16 +25,12 @@ export default function MLProjectsSection() {
         {ML_PROJECTS.map((project, i) => (
           <motion.div
             key={project.id}
-            variants={scaleIn}
+            variants={springBounce}
             custom={i}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            whileHover={{ y: -5, scale: 1.02 }}
-            className="rounded-2xl border overflow-hidden text-center"
-            style={{
-              background: isDark ? "rgba(255,255,255,0.025)" : "rgba(255,255,255,0.85)",
-              borderColor: isDark ? "rgba(255,255,255,0.07)" : "rgba(59,130,246,0.08)",
-            }}
+            whileHover={{ y: -6, scale: 1.03, boxShadow: isDark ? "0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(59,130,246,0.08)" : "0 12px 30px rgba(59,130,246,0.1)" }}
+            className="glass-card holographic rounded-2xl overflow-hidden text-center"
           >
             <div className="p-6">
               <div style={{ fontSize: "2.2rem", marginBottom: "12px" }}>{project.emoji}</div>
@@ -68,8 +64,8 @@ export default function MLProjectsSection() {
               </div>
 
               <div className="mt-5 pt-4" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.05)" : "1px solid rgba(59,130,246,0.08)" }}>
-                <motion.a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
+              <motion.a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.08, y: -2 }}
                   className="inline-flex items-center gap-1.5 rounded-lg text-xs font-medium px-3.5 py-2"
                   style={{
                     border: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,

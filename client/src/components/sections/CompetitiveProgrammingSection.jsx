@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { ExternalLink, Code2, Trophy } from "lucide-react";
 import { CP_PROFILES } from "@data/achievements";
 import { useTheme } from "@context/ThemeContext";
-import { scaleIn } from "@components/common/AnimationVariants";
+import { scaleIn, cinematicSlideUp } from "@components/common/AnimationVariants";
 
 const PLATFORM_LOGOS = {
   LeetCode: (
@@ -32,10 +32,10 @@ export default function CompetitiveProgrammingSection() {
   return (
     <section id="competitive-programming" className="section-container pt-0" ref={ref}>
       <div className="text-center mb-14">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="mb-4">
+        <motion.div variants={cinematicSlideUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"} className="mb-4">
           <span className="section-tag"><Trophy size={12} />Competitive Programming</span>
         </motion.div>
-        <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="section-title">
+        <motion.h2 variants={cinematicSlideUp} custom={1} initial="hidden" animate={inView ? "visible" : "hidden"} className="section-title">
           Problem Solving Profiles
         </motion.h2>
         <div className="section-divider" />
@@ -46,8 +46,8 @@ export default function CompetitiveProgrammingSection() {
           <motion.a
             key={cp.platform} href={cp.link} target="_blank" rel="noopener noreferrer"
             variants={scaleIn} custom={i} initial="hidden" animate={inView ? "visible" : "hidden"}
-            whileHover={{ y: -6, scale: 1.02 }}
-            className="group relative rounded-2xl p-6 border text-center overflow-hidden"
+            whileHover={{ y: -6, scale: 1.02, boxShadow: `0 20px 40px ${cp.color}15, 0 0 20px ${cp.color}10` }}
+            className="group relative rounded-2xl p-6 border text-center overflow-hidden glass-card holographic"
             style={{
               background: isDark ? cp.bgColor : "rgba(255,255,255,0.9)",
               borderColor: cp.borderColor,

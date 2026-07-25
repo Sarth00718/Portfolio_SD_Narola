@@ -1,13 +1,19 @@
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from '@context/ThemeContext';
 import AppRouter from './router/AppRouter';
+import { MouseProvider } from '@components/common/MouseTracker';
+import SmoothScroll from '@components/common/SmoothScroll';
+import InitialLoader from '@components/common/InitialLoader';
 import './index.css';
 
 export default function App() {
   return (
     <ThemeProvider>
-      <AppRouter />
-      <Toaster
+      <InitialLoader />
+      <MouseProvider>
+        <SmoothScroll>
+          <AppRouter />
+          <Toaster
         position="top-right"
         toastOptions={{
           duration: 4000,
@@ -27,6 +33,8 @@ export default function App() {
           },
         }}
       />
+        </SmoothScroll>
+      </MouseProvider>
     </ThemeProvider>
   );
 }

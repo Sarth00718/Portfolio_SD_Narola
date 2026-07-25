@@ -1,9 +1,8 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Briefcase, Calendar, MapPin, CheckCircle, Code2 } from "lucide-react";
 import { useTheme } from "@context/ThemeContext";
-import { fadeUp, staggerContainer, staggerItem } from "@components/common/AnimationVariants";
+import { cinematicSlideUp, stagger3D, stagger3DItem } from "@components/common/AnimationVariants";
 
 const EXPERIENCE_DATA = [
   {
@@ -38,62 +37,97 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="section-container" ref={ref}>
       <div className="text-center mb-16 sm:mb-20">
-        <motion.div variants={fadeUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"} className="mb-4">
+        <motion.div variants={cinematicSlideUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"} className="mb-4">
           <span className="section-tag"><Briefcase size={12} />Professional Experience</span>
         </motion.div>
-        <motion.h2 variants={fadeUp} custom={1} initial="hidden" animate={inView ? "visible" : "hidden"} className="section-title">
+        <motion.h2 variants={cinematicSlideUp} custom={1} initial="hidden" animate={inView ? "visible" : "hidden"} className="section-title">
           Work Experience
         </motion.h2>
         <div className="section-divider" />
       </div>
 
       <div className="relative w-full max-w-4xl mx-auto">
-        {/* Timeline line */}
-        <div
-          className="absolute left-[28px] top-0 bottom-0 w-[2px] rounded-full hidden sm:block"
+        {/* Animated timeline line */}
+        <motion.div
+          className="absolute left-[28px] top-0 w-[2px] rounded-full hidden sm:block"
           style={{
             background: isDark
-              ? "linear-gradient(to bottom, transparent, rgba(59,130,246,0.25), rgba(37,99,235,0.25), transparent)"
+              ? "linear-gradient(to bottom, transparent, rgba(59,130,246,0.3), rgba(34,211,238,0.2), transparent)"
               : "linear-gradient(to bottom, transparent, rgba(59,130,246,0.15), rgba(37,99,235,0.15), transparent)",
           }}
+          initial={{ height: 0 }}
+          animate={inView ? { height: "100%" } : {}}
+          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
         />
 
-        <motion.div variants={staggerContainer} initial="hidden" animate={inView ? "visible" : "hidden"} className="space-y-16">
+        {/* Glowing particle on timeline */}
+        {inView && (
+          <motion.div
+            className="absolute left-[27px] w-[4px] h-[4px] rounded-full hidden sm:block"
+            style={{
+              background: "#60a5fa",
+              boxShadow: "0 0 12px #60a5fa, 0 0 24px rgba(96,165,250,0.4)",
+            }}
+            animate={{
+              top: ["0%", "100%", "0%"],
+              opacity: [0, 1, 1, 0],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        )}
+
+        <motion.div variants={stagger3D} initial="hidden" animate={inView ? "visible" : "hidden"} className="space-y-16">
           {EXPERIENCE_DATA.map((exp) => (
             <div key={exp.id} className="relative flex flex-col sm:flex-row items-start w-full">
               {/* Timeline dot */}
-              <div className="hidden sm:flex absolute left-[28px] -translate-x-1/2 w-14 h-14 rounded-full border-4 items-center justify-center z-10 overflow-hidden"
+              <motion.div
+                className="hidden sm:flex absolute left-[28px] -translate-x-1/2 w-14 h-14 rounded-full border-4 items-center justify-center z-10 overflow-hidden"
                 style={{
                   borderColor: isDark ? "#0a0e1a" : "#f0f2f8",
                   background: isDark ? "rgba(59,130,246,0.1)" : "rgba(59,130,246,0.06)",
-                  boxShadow: "0 0 20px rgba(59,130,246,0.2)",
                 }}
+                whileHover={{ scale: 1.15 }}
+                animate={{
+                  boxShadow: [
+                    "0 0 15px rgba(59,130,246,0.2)",
+                    "0 0 30px rgba(59,130,246,0.4)",
+                    "0 0 15px rgba(59,130,246,0.2)",
+                  ],
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
               >
                 <span style={{ fontSize: "1.3rem" }}>💼</span>
-              </div>
+              </motion.div>
 
-              <motion.div variants={staggerItem} className="w-full sm:ml-20">
-                <div
-                  className="p-6 md:p-8 rounded-2xl border relative overflow-hidden group"
-                  style={{
-                    background: isDark ? "rgba(255,255,255,0.025)" : "rgba(255,255,255,0.85)",
-                    borderColor: isDark ? "rgba(255,255,255,0.07)" : "rgba(59,130,246,0.08)",
-                    transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+              <motion.div variants={stagger3DItem} className="w-full sm:ml-20">
+                <motion.div
+                  className="glass-card spotlight-card p-6 md:p-8 rounded-2xl relative overflow-hidden group"
+                  whileHover={{ y: -4, scale: 1.005 }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    e.currentTarget.style.setProperty("--spotlight-x", `${e.clientX - rect.left}px`);
+                    e.currentTarget.style.setProperty("--spotlight-y", `${e.clientY - rect.top}px`);
                   }}
                 >
                   {/* Role header */}
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                     <div className="flex items-center gap-4">
                       {exp.logo && (
-                        <div 
-                          className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex-shrink-0 flex items-center justify-center p-1.5 bg-white" 
-                          style={{ 
+                        <motion.div
+                          className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex-shrink-0 flex items-center justify-center p-1.5 bg-white"
+                          style={{
                             border: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)"}`,
-                            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
+                            boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
                           }}
+                          whileHover={{ rotateY: 180 }}
+                          transition={{ duration: 0.6 }}
                         >
-                          <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-contain" />
-                        </div>
+                          <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-contain" style={{ backfaceVisibility: "hidden" }} />
+                        </motion.div>
                       )}
                       <div>
                         <h3 className="font-bold" style={{
@@ -103,7 +137,7 @@ export default function ExperienceSection() {
                           {exp.role}
                         </h3>
                         <div className="flex flex-wrap items-center gap-2 mt-1">
-                          <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "#60a5fa" }}>
+                          <span className="neon-text" style={{ fontSize: "0.9rem", fontWeight: 600, color: "#60a5fa" }}>
                             {exp.company}
                           </span>
                           <span className="px-2 py-0.5 rounded-full text-[0.65rem] font-semibold uppercase tracking-wider"
@@ -141,12 +175,22 @@ export default function ExperienceSection() {
                     </h4>
                     <ul className="space-y-2">
                       {exp.contributions.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2.5">
-                          <span className="w-1 h-1 rounded-full flex-shrink-0 mt-2" style={{ background: "#60a5fa" }} />
+                        <motion.li
+                          key={i}
+                          className="flex items-start gap-2.5"
+                          initial={{ opacity: 0, x: -15 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.06 }}
+                        >
+                          <motion.span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
+                            style={{ background: "#60a5fa", boxShadow: "0 0 6px rgba(96,165,250,0.5)" }}
+                          />
                           <span className="text-sm leading-relaxed" style={{ color: isDark ? "#cbd5e1" : "#475569" }}>
                             {item}
                           </span>
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
@@ -158,9 +202,14 @@ export default function ExperienceSection() {
                       <Code2 size={12} style={{ color: "#2563eb" }} /> Tech Stack
                     </h4>
                     <div className="flex flex-wrap gap-1.5">
-                      {exp.techStack.map((tech) => (
-                        <span
+                      {exp.techStack.map((tech, ti) => (
+                        <motion.span
                           key={tech}
+                          initial={{ opacity: 0, scale: 0 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: ti * 0.04, type: "spring", stiffness: 300, damping: 15 }}
+                          whileHover={{ scale: 1.1, y: -2 }}
                           className="px-2.5 py-1 rounded-lg text-xs font-medium"
                           style={{
                             fontFamily: "'JetBrains Mono', monospace",
@@ -173,19 +222,21 @@ export default function ExperienceSection() {
                             e.currentTarget.style.background = "rgba(59,130,246,0.12)";
                             e.currentTarget.style.borderColor = "rgba(59,130,246,0.25)";
                             e.currentTarget.style.color = "#60a5fa";
+                            e.currentTarget.style.boxShadow = "0 0 10px rgba(59,130,246,0.15)";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.background = isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)";
                             e.currentTarget.style.borderColor = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
                             e.currentTarget.style.color = isDark ? "#cbd5e1" : "#334155";
+                            e.currentTarget.style.boxShadow = "none";
                           }}
                         >
                           {tech}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             </div>
           ))}

@@ -1,3 +1,4 @@
+import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
@@ -5,24 +6,31 @@ import {
 } from "lucide-react";
 import { PROFILE } from "@data/achievements";
 import { useTheme } from "@context/ThemeContext";
-import { fadeUp } from "@components/common/AnimationVariants";
+import { cinematicSlideUp, stagger3D, stagger3DItem } from "@components/common/AnimationVariants";
 
 export default function AboutSection() {
   const { isDark } = useTheme();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.08 });
+
+  const handleSpotlight = useCallback((e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--spotlight-x", `${e.clientX - rect.left}px`);
+    card.style.setProperty("--spotlight-y", `${e.clientY - rect.top}px`);
+  }, []);
 
   return (
     <section id="about" className="section-container" ref={ref}>
       {/* Header */}
       <div className="text-center mb-14 sm:mb-16">
         <motion.div
-          variants={fadeUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"}
+          variants={cinematicSlideUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"}
           className="mb-4"
         >
           <span className="section-tag"><User size={12} />About Me</span>
         </motion.div>
         <motion.h2
-          variants={fadeUp} custom={1} initial="hidden" animate={inView ? "visible" : "hidden"}
+          variants={cinematicSlideUp} custom={1} initial="hidden" animate={inView ? "visible" : "hidden"}
           className="section-title"
         >
           Who I Am
@@ -31,25 +39,25 @@ export default function AboutSection() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start">
-        {/* Left — Bio (7 cols) */}
+        {/* Left — Bio */}
         <motion.div
-          variants={fadeUp} custom={2} initial="hidden" animate={inView ? "visible" : "hidden"}
+          variants={cinematicSlideUp} custom={2} initial="hidden" animate={inView ? "visible" : "hidden"}
           className="lg:col-span-7 space-y-5"
         >
-          {/* Bio card — editorial style */}
+          {/* Bio card */}
           <div
-            className="rounded-2xl p-6 sm:p-8 border relative overflow-hidden"
-            style={{
-              background: isDark ? "rgba(255,255,255,0.025)" : "rgba(255,255,255,0.85)",
-              borderColor: isDark ? "rgba(255,255,255,0.07)" : "rgba(59,130,246,0.08)",
-            }}
+            className="glass-card spotlight-card rounded-2xl p-6 sm:p-8 relative overflow-hidden"
+            onMouseMove={handleSpotlight}
           >
             {/* Decorative accent */}
-            <div
-              className="absolute top-0 left-0 w-1 h-full rounded-r-full"
+            <motion.div
+              className="absolute top-0 left-0 w-1 rounded-r-full"
               style={{
-                background: "linear-gradient(180deg, #3b82f6, #2563eb)",
+                background: "linear-gradient(180deg, #3b82f6, #22d3ee, #2563eb)",
               }}
+              initial={{ height: 0 }}
+              animate={inView ? { height: "100%" } : {}}
+              transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             />
             <div className="pl-4">
               <p className="mb-4" style={{ color: isDark ? "#cbd5e1" : "#334155", lineHeight: 1.8 }}>
@@ -58,8 +66,8 @@ export default function AboutSection() {
                   Sarth Narola
                 </span>{" "}
                 ({PROFILE.rollNo}), a final-year B.Tech CSE student at{" "}
-                <span style={{ color: "#60a5fa", fontWeight: 600 }}>Nirma University</span>{" "}
-                with a CGPA of <span style={{ color: "#60a5fa", fontWeight: 700 }}>9.11</span>.
+                <span className="neon-text" style={{ color: "#60a5fa", fontWeight: 600 }}>Nirma University</span>{" "}
+                with a CGPA of <span className="neon-text" style={{ color: "#60a5fa", fontWeight: 700 }}>9.11</span>.
                 I am passionate about building production-ready web applications and
                 AI-integrated systems.
               </p>
@@ -79,7 +87,12 @@ export default function AboutSection() {
           </div>
 
           {/* Contact info grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <motion.div
+            variants={stagger3D}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+          >
             {[
               { icon: Mail, label: "Personal Email", value: PROFILE.email, href: `mailto:${PROFILE.email}` },
               { icon: Mail, label: "Nirma Email", value: PROFILE.nirmaEmail, href: `mailto:${PROFILE.nirmaEmail}` },
@@ -87,13 +100,11 @@ export default function AboutSection() {
               { icon: Github, label: "GitHub", value: "github.com/Sarth00718", href: PROFILE.github },
               { icon: Linkedin, label: "LinkedIn", value: "sarth-narola-223002323", href: PROFILE.linkedin },
             ].map((item) => (
-              <div
+              <motion.div
                 key={item.label}
-                className="flex items-center gap-3 p-3.5 rounded-xl border"
-                style={{
-                  background: isDark ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.7)",
-                  borderColor: isDark ? "rgba(255,255,255,0.07)" : "rgba(59,130,246,0.08)",
-                }}
+                variants={stagger3DItem}
+                whileHover={{ y: -3, scale: 1.02 }}
+                className="glass-card flex items-center gap-3 p-3.5 rounded-xl"
               >
                 <div
                   className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -132,31 +143,40 @@ export default function AboutSection() {
                     </p>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
-        {/* Right — Education + Links (5 cols) */}
+        {/* Right — Education + Links */}
         <motion.div
-          variants={fadeUp} custom={3} initial="hidden" animate={inView ? "visible" : "hidden"}
+          variants={cinematicSlideUp} custom={3} initial="hidden" animate={inView ? "visible" : "hidden"}
           className="lg:col-span-5 space-y-4"
+          style={{ perspective: "1000px" }}
         >
           {/* Education */}
-          <div
-            className="rounded-2xl p-5 sm:p-6 border"
+          <motion.div
+            whileHover={{ rotateY: 3, rotateX: -2, scale: 1.01 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="glass-card gradient-border rounded-2xl p-5 sm:p-6"
             style={{
               background: isDark ? "rgba(59,130,246,0.04)" : "rgba(59,130,246,0.03)",
               borderColor: isDark ? "rgba(59,130,246,0.12)" : "rgba(59,130,246,0.1)",
+              transformStyle: "preserve-3d",
             }}
           >
             <div className="flex items-center gap-3 mb-5">
-              <div
+              <motion.div
                 className="w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg, #3b82f6, #2563eb)" }}
+                style={{
+                  background: "linear-gradient(135deg, #3b82f6, #2563eb)",
+                  boxShadow: "0 4px 16px rgba(59,130,246,0.35)",
+                }}
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
                 <GraduationCap size={18} className="text-white" />
-              </div>
+              </motion.div>
               <div>
                 <h3 style={{ fontSize: "1rem", fontWeight: 700, color: isDark ? "#e8ecf4" : "#0f0f1a" }}>
                   Education
@@ -178,31 +198,28 @@ export default function AboutSection() {
 
               <div className="flex items-center justify-between mb-2">
                 <span style={{ fontSize: "0.78rem", color: "var(--text-muted)", fontWeight: 500 }}>CGPA</span>
-                <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "#60a5fa" }}>9.11 / 10.0</span>
+                <span className="neon-text" style={{ fontSize: "0.85rem", fontWeight: 700, color: "#60a5fa" }}>9.11 / 10.0</span>
               </div>
               <div
-                className="h-1.5 rounded-full overflow-hidden"
+                className="h-2 rounded-full overflow-hidden"
                 style={{ background: isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)" }}
               >
                 <motion.div
                   initial={{ width: 0 }}
                   animate={inView ? { width: "91%" } : { width: 0 }}
-                  transition={{ duration: 1.2, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="h-full rounded-full"
-                  style={{ background: "linear-gradient(90deg, #3b82f6, #2563eb)" }}
+                  transition={{ duration: 1.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full rounded-full neon-bar"
+                  style={{
+                    background: "linear-gradient(90deg, #3b82f6, #22d3ee, #2563eb)",
+                    boxShadow: "0 0 12px rgba(59,130,246,0.4)",
+                  }}
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Social Links */}
-          <div
-            className="rounded-2xl p-5 sm:p-6 border"
-            style={{
-              background: isDark ? "rgba(255,255,255,0.025)" : "rgba(255,255,255,0.85)",
-              borderColor: isDark ? "rgba(255,255,255,0.07)" : "rgba(59,130,246,0.08)",
-            }}
-          >
+          <div className="glass-card rounded-2xl p-5 sm:p-6">
             <h3 style={{ fontSize: "1rem", fontWeight: 700, color: isDark ? "#e8ecf4" : "#0f0f1a", marginBottom: "1rem" }}>
               Connect With Me
             </h3>
@@ -212,7 +229,7 @@ export default function AboutSection() {
                 { href: PROFILE.linkedin, icon: Linkedin, label: "LinkedIn", sub: "sarth-narola-223002323" },
                 { href: `mailto:${PROFILE.email}`, icon: Mail, label: "Gmail", sub: PROFILE.email },
                 { href: `mailto:${PROFILE.nirmaEmail}`, icon: Mail, label: "Nirma Email", sub: PROFILE.nirmaEmail },
-              ].map((link) => {
+              ].map((link, i) => {
                 const LinkIcon = link.icon;
                 return (
                   <motion.a
@@ -220,20 +237,25 @@ export default function AboutSection() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    whileHover={{ x: 4 }}
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.8 + i * 0.1 }}
+                    whileHover={{ x: 6, scale: 1.01 }}
                     className="flex items-center gap-3 p-3 rounded-xl border group"
                     style={{
                       borderColor: isDark ? "rgba(255,255,255,0.07)" : "rgba(59,130,246,0.08)",
                       background: isDark ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.6)",
-                      transition: "all 0.2s",
+                      transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = "rgba(59,130,246,0.25)";
                       e.currentTarget.style.background = "rgba(59,130,246,0.04)";
+                      e.currentTarget.style.boxShadow = "0 4px 16px rgba(59,130,246,0.08)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.borderColor = isDark ? "rgba(255,255,255,0.07)" : "rgba(59,130,246,0.08)";
                       e.currentTarget.style.background = isDark ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.6)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   >
                     <LinkIcon size={16} style={{ color: "#60a5fa", flexShrink: 0 }} />
@@ -245,7 +267,7 @@ export default function AboutSection() {
                         {link.sub}
                       </p>
                     </div>
-                    <ExternalLink size={12} style={{ color: "var(--text-muted)", flexShrink: 0 }} />
+                    <ExternalLink size={12} style={{ color: "var(--text-muted)", flexShrink: 0, transition: "transform 0.3s" }} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </motion.a>
                 );
               })}

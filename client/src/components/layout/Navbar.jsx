@@ -16,22 +16,15 @@ const NAV_ITEMS = [
   { label: "Contact",  href: "#contact" },
 ];
 
-const navSpring = { type: "spring", stiffness: 200, damping: 25, mass: 0.5 };
-
 export default function Navbar() {
   const { isDark, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("");
-  const [atTop, setAtTop] = useState(true);
-  const [lastScroll, setLastScroll] = useState(0);
 
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 24);
-      setAtTop(y < 10);
-      setLastScroll(y);
+      setScrolled(window.scrollY > 24);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -58,10 +51,6 @@ export default function Navbar() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  const navHeight = scrolled ? "h-14" : "h-16";
-  const logoSize = scrolled ? "w-7 h-7" : "w-8 h-8";
-  const logoText = scrolled ? "hidden" : "hidden sm:block";
-
   const navBg = scrolled
     ? isDark ? "rgba(5,8,15,0.88)" : "rgba(250,251,253,0.88)"
     : "transparent";
@@ -86,13 +75,13 @@ export default function Navbar() {
           animate={{
             height: scrolled ? 56 : 64,
             background: navBg,
-            backdropFilter: scrolled ? "blur(28px)" : "blur(0px)",
-            WebkitBackdropFilter: scrolled ? "blur(28px)" : "blur(0px)",
+            backdropFilter: scrolled ? "blur(28px) saturate(180%)" : "blur(0px)",
+            WebkitBackdropFilter: scrolled ? "blur(28px) saturate(180%)" : "blur(0px)",
             borderBottom: scrolled
               ? isDark ? "1px solid rgba(255,255,255,0.05)" : "1px solid rgba(59,130,246,0.08)"
               : "1px solid transparent",
             boxShadow: scrolled
-              ? isDark ? "0 4px 32px rgba(0,0,0,0.4)" : "0 4px 32px rgba(59,130,246,0.05)"
+              ? isDark ? "0 4px 32px rgba(0,0,0,0.4), 0 0 10px rgba(59,130,246,0.05)" : "0 4px 32px rgba(59,130,246,0.05)"
               : "0 4px 32px rgba(0,0,0,0)",
           }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -108,13 +97,14 @@ export default function Navbar() {
           >
             <motion.div
               layout
-              transition={navSpring}
-              className={`${logoSize} rounded-lg flex items-center justify-center font-display font-black text-xs`}
+              className="w-8 h-8 rounded-lg flex items-center justify-center font-display font-black text-xs"
               style={{
                 background: "linear-gradient(135deg, #3b82f6, #2563eb)",
                 color: "#fff",
                 boxShadow: "0 4px 12px rgba(59,130,246,0.35)",
               }}
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               SN
             </motion.div>
@@ -125,7 +115,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -8 }}
                   transition={{ duration: 0.2 }}
-                  className="font-display font-bold text-sm"
+                  className="font-display font-bold text-sm hidden sm:block"
                   style={{
                     letterSpacing: "-0.03em",
                     color: isDark ? "#e8ecf4" : "#0f0f1a",
@@ -145,7 +135,7 @@ export default function Navbar() {
                 <motion.button
                   key={item.label}
                   onClick={() => scrollTo(item.href)}
-                  whileHover={{ scale: 1.03 }}
+                  whileHover={{ scale: 1.05, y: -1 }}
                   whileTap={{ scale: 0.97 }}
                   title={item.title || item.label}
                   className="relative px-2.5 py-2 rounded-lg text-xs font-medium transition-colors no-min-size"
@@ -160,8 +150,13 @@ export default function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="nav-indicator"
-                      className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
-                      style={{ background: "#60a5fa" }}
+                      className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 rounded-full"
+                      style={{
+                        width: "16px",
+                        height: "2px",
+                        background: "linear-gradient(90deg, #3b82f6, #22d3ee)",
+                        boxShadow: "0 0 8px rgba(59,130,246,0.5)",
+                      }}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -172,7 +167,7 @@ export default function Navbar() {
 
           {/* Right controls */}
           <div className="flex items-center gap-1.5">
-            {/* Social icons — desktop only */}
+            {/* Social icons */}
             <div className="hidden lg:flex items-center gap-1">
               {[
                 { icon: Github, href: PROFILE.github, label: "GitHub" },
@@ -186,7 +181,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
-                    whileHover={{ scale: 1.1, y: -1 }}
+                    whileHover={{ scale: 1.15, y: -2, rotate: 5 }}
                     className="w-8 h-8 flex items-center justify-center rounded-lg no-min-size transition-colors"
                     style={{ color: isDark ? "#64748b" : "#9ca3af" }}
                     onMouseEnter={(e) => { e.currentTarget.style.color = "#60a5fa"; }}
@@ -202,7 +197,7 @@ export default function Navbar() {
             <motion.a
               href="/resume.pdf"
               download
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.04, boxShadow: "0 0 16px rgba(59,130,246,0.2)" }}
               whileTap={{ scale: 0.97 }}
               className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold no-min-size"
               style={{
@@ -227,7 +222,7 @@ export default function Navbar() {
 
             {/* Theme toggle */}
             <motion.button
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
               onClick={toggleTheme}
               className="w-9 h-9 flex items-center justify-center rounded-lg no-min-size relative"
@@ -292,7 +287,7 @@ export default function Navbar() {
               className="lg:hidden overflow-hidden border-t"
               style={{
                 background: isDark ? "rgba(5,8,15,0.98)" : "rgba(250,251,253,0.98)",
-                backdropFilter: "blur(24px)",
+                backdropFilter: "blur(24px) saturate(180%)",
                 borderColor: isDark ? "rgba(255,255,255,0.05)" : "rgba(59,130,246,0.08)",
               }}
             >
@@ -319,7 +314,7 @@ export default function Navbar() {
                         <motion.div
                           layoutId="mobile-indicator"
                           className="w-1.5 h-1.5 rounded-full"
-                          style={{ background: "#60a5fa" }}
+                          style={{ background: "#60a5fa", boxShadow: "0 0 8px rgba(96,165,250,0.5)" }}
                         />
                       )}
                     </motion.button>
@@ -333,6 +328,7 @@ export default function Navbar() {
                     style={{
                       background: "linear-gradient(135deg, #3b82f6, #2563eb)",
                       color: "#fff",
+                      boxShadow: "0 4px 16px rgba(59,130,246,0.3)",
                     }}
                   >
                     <Download size={14} />

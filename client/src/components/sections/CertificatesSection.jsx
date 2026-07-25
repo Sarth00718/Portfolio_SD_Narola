@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-mo
 import { useInView } from "react-intersection-observer";
 import { Award, ExternalLink, Calendar, Tag, Download, FileText, X, Sparkles } from "lucide-react";
 import { CERTIFICATES } from "@data/certificates";
+import { cinematicSlideUp } from "@components/common/AnimationVariants";
 
 function CertCard({ cert, index, onViewPdf }) {
   const cardRef = useRef(null);
@@ -45,7 +46,7 @@ function CertCard({ cert, index, onViewPdf }) {
           boxShadow: isHovered ? `0 0 40px ${cert.color}15, 0 20px 40px rgba(0,0,0,0.3)` : "var(--shadow-sm)",
         }}
         transition={{ type: "spring", damping: 18, stiffness: 250 }}
-        className="relative rounded-2xl border overflow-hidden h-full"
+        className="relative rounded-2xl border overflow-hidden h-full glass-card holographic"
       >
         {/* Shine */}
         <motion.div className="absolute inset-0 pointer-events-none z-10"
@@ -204,10 +205,10 @@ export default function CertificatesSection() {
     <>
       <section id="certificates" className="section-container pt-0 relative" ref={ref}>
         <div className="relative z-10 text-center mb-14">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="mb-4">
+          <motion.div variants={cinematicSlideUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"} className="mb-4">
             <span className="section-tag"><Award size={12} />Certifications</span>
           </motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="section-title">
+          <motion.h2 variants={cinematicSlideUp} custom={1} initial="hidden" animate={inView ? "visible" : "hidden"} className="section-title">
             Licenses & Certificates
           </motion.h2>
           <div className="section-divider" />

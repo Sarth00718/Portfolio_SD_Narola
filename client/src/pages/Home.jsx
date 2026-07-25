@@ -7,6 +7,7 @@ import SEOMeta from "@components/common/SEOMeta";
 import ScrollProgress from "@components/common/ScrollProgress";
 import BackToTop from "@components/common/BackToTop";
 import CustomCursor from "@components/common/CustomCursor";
+import SectionTransition from "@components/common/SectionTransition";
 
 const AboutSection = lazy(() => import("@components/sections/AboutSection"));
 const SkillsSection = lazy(() => import("@components/sections/SkillsSection"));
@@ -24,9 +25,16 @@ function SectionLoader() {
   return (
     <div className="flex items-center justify-center py-20">
       <div className="relative w-10 h-10">
-        <div className="absolute inset-0 rounded-full border-2" style={{ borderColor: "rgba(59,130,246,0.15)" }} />
-        <div className="absolute inset-0 rounded-full border-t-2 animate-spin"
-          style={{ borderTopColor: "#60a5fa", borderColor: "transparent" }} />
+        <div className="absolute inset-0 rounded-full" style={{
+          border: "2px solid rgba(59,130,246,0.1)",
+        }} />
+        <div className="absolute inset-0 rounded-full animate-spin" style={{
+          borderTop: "2px solid #60a5fa",
+          borderRight: "2px solid transparent",
+          borderBottom: "2px solid transparent",
+          borderLeft: "2px solid transparent",
+          boxShadow: "0 0 12px rgba(96,165,250,0.3)",
+        }} />
       </div>
     </div>
   );
@@ -43,15 +51,22 @@ export default function Home() {
         <main id="main-content" role="main">
           <HeroSection />
           <Suspense fallback={<SectionLoader />}><AboutSection /></Suspense>
+          <SectionTransition variant="glow" />
           <Suspense fallback={<SectionLoader />}><SkillsSection /></Suspense>
+          <SectionTransition variant="particles" />
           <Suspense fallback={<SectionLoader />}><ExperienceSection /></Suspense>
+          <SectionTransition variant="glow" />
           <Suspense fallback={<SectionLoader />}><ProjectsSection /></Suspense>
+          <SectionTransition variant="particles" />
           <Suspense fallback={<SectionLoader />}><HackathonSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><MLProjectsSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><DSAProjectsSection /></Suspense>
+          <SectionTransition variant="glow" />
           <Suspense fallback={<SectionLoader />}><AchievementsSection /></Suspense>
           <Suspense fallback={<SectionLoader />}><CertificatesSection /></Suspense>
+          <SectionTransition variant="particles" />
           <Suspense fallback={<SectionLoader />}><CompetitiveProgramming /></Suspense>
+          <SectionTransition variant="glow" />
           <Suspense fallback={<SectionLoader />}><ContactSection /></Suspense>
         </main>
         <Footer />
